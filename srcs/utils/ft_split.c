@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/23 12:38:57 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/01/23 14:57:05 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#include "../../incs/main.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-
-#endif
+char	**ft_split(char *str)
+{
+	return (0);
+}

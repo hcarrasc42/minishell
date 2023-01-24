@@ -6,7 +6,7 @@
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/01/23 14:44:53 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/01/24 11:02:15 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,16 @@ DIR_OBJS		=	objs/
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra -g#3 -fsanitize=address
 
-SRCS			=	srcs/main.c					\
+SRCS			=	srcs/main.c								\
+					srcs/utils/ft_split.c					\
+					srcs/utils/ft_split_utils.c				\
 
 OBJS			=	$(SRCS:.c=.o)
 PREFIXED	=	$(addprefix $(DIR_OBJS), $(OBJS))
 
 $(DIR_OBJS)%.o : %.c
 	@mkdir -p $(DIR_OBJS)/srcs
+	@mkdir -p $(DIR_OBJS)/srcs/utils
 	@echo "${YELLOW}Compiling with >>${RESET} $(CC) $(CFLAGS):\t $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 

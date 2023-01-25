@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/24 12:45:11 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:09:44 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 typedef struct s_split
 {
 	int		i;
-	char	**tmp;
+	int		k;
+	int		len;
 }	t_split;
 
 typedef struct s_input

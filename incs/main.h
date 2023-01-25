@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/24 13:03:10 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:25:37 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 char	**ft_split_init(char *str);
 
 // Split Utils
-void	ft_jump_spaces(char *str, t_split s);
+int	ft_jump_spaces(char *str, int i);
 char	*ft_no_comillas(char *tmp, char *str, t_split *s);
 char	*ft_comillas(char *tmp, char *str, t_split *s);
 

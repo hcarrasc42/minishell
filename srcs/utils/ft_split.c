@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/24 14:08:57 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:10:13 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,56 +56,37 @@ int	ft_len_spaces(char *str, int i)
 	return (len);
 }
 
-char	**ft_split(char *str)
+char	**ft_split(char *str, t_split *s)
 {
-	int		j;
 	int		i;
-	int		k;
-	int		len;
 	char	**tmp;
 
-	len = ft_len(str);
-	tmp = (char **)malloc(sizeof(char *) * (len + 1));
 	i = 0;
-	k = 0;
+	s->k = 0;
+	s->len = ft_len(str);
+	tmp = (char **)malloc(sizeof(char *) * (s->len + 1));
 	while (str[i])
 	{
-		j = 0;
-		while (str[i] && (str[i] == '\n' || str[i] == ' ' || str[i] == '\t'))
-			i++;
-		tmp[k] = (char *)malloc(sizeof(char) * (ft_len_spaces(str, i) + 1));
+		i = ft_jump_spaces(str, i);
+		tmp[s->k] = (char *)malloc(sizeof(char) * (ft_len_spaces(str, i) + 1));
+		s->i = i;
 		if (str[i] == 34)
-		{
-			i++;
-			while (str[i] && str[i] != 34)
-			{
-				tmp[k][j] = str[i];
-				i++;
-				j++;
-			}
-			i++;
-		}
+			tmp[s->k] = ft_comillas(tmp[s->k], str, s);
 		else
-		{
-			while (str[i] && str[i] != '\n' && str[i] != ' '
-				&& str[i] != '\t' && str[i] != 34)
-			{
-				tmp[k][j] = str[i];
-				i++;
-				j++;
-			}
-		}
-		tmp[k][j] = '\0';
-		k++;
+			tmp[s->k] = ft_no_comillas(tmp[s->k], str, s);
+		i = s->i;
+		s->k++;
 	}
-	tmp[k] = NULL;
+	tmp[s->k] = NULL;
+	free(tmp);
 	return (tmp);
 }
 
 char	**ft_split_init(char *str)
 {
 	char	**aux;
+	t_split	s;
 
-	aux = ft_split(str);
+	aux = ft_split(str, &s);
 	return (aux);
 }

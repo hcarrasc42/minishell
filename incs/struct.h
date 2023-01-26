@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/23 13:22:08 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/01/26 10:46:20 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/main.h"
+#ifndef STRUCT_H
+# define STRUCT_H
 
-int	main(void)
+typedef struct s_split
 {
-	hola
-	return (0);
-}
+	int		i;
+	int		k;
+	int		len;
+	char	*read;
+	char	**tmp;
+}	t_split;
+
+#endif

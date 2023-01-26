@@ -1,33 +1,38 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/01/23 12:38:46 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/01/25 14:44:32 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	minishell
 DIR_OBJS		=	objs/
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS			=	-Wall -Werror -Wextra -g#3 -fsanitize=address
 
-SRCS			=	
+SRCS			=	srcs/main.c											\
+					srcs/ft_error.c										\
+					srcs/utils/utils.c									\
+					srcs/utils/split/ft_split.c							\
+					srcs/utils/split/ft_split_utils.c					\
 
 OBJS			=	$(SRCS:.c=.o)
 PREFIXED	=	$(addprefix $(DIR_OBJS), $(OBJS))
 
 $(DIR_OBJS)%.o : %.c
-	@mkdir -p $(DIR_OBJS)
-	@mkdir -p $(DIR_OBJS)
+	@mkdir -p $(DIR_OBJS)/srcs
+	@mkdir -p $(DIR_OBJS)/srcs/utils
+	@mkdir -p $(DIR_OBJS)/srcs/utils/split
 	@echo "${YELLOW}Compiling with >>${RESET} $(CC) $(CFLAGS):\t $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(PREFIXED)
-	@$(CC) $(CFLAGS) -o $(NAME) $(PREFIXED)
+	@$(CC) $(CFLAGS)  -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I /Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(PREFIXED)
 	@echo "\n${GREEN}Mandatory part compiled!${RESET}\n"
 
 

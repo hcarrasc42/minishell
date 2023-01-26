@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/26 11:00:49 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/26 12:14:38 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void			ft_print_msh(char **str);
 
 // Srcs/Utils/Split/ft_split.c
 char			**ft_split(t_split *s, char *str);
+char			*ft_split_core(char *tmp, t_split *s);
 
 // Srcs/Utils/Split/ft_split_utils.c
 int				ft_jump_spaces(char *str, int i);

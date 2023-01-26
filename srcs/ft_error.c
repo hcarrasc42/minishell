@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/26 10:46:20 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/01/25 13:36:33 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/01/26 10:56:48 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "../incs/main.h"
 
-typedef struct s_split
+/* void	ft_error(t_split *s)
 {
-	int		i;
-	int		k;
-	int		len;
-	char	*read;
-	char	**tmp;
-}	t_split;
-
-#endif
+	if (!strncmp(i->read, "exit", 4))
+	{
+		free(i->read);
+		exit (0);
+	}
+	else
+		return ;
+}
+ */

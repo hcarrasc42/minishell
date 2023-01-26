@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/26 10:46:20 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/01/25 14:42:46 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/01/26 10:48:07 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "../../incs/main.h"
 
-typedef struct s_split
+void	ft_print_msh(char **str)
 {
-	int		i;
-	int		k;
-	int		len;
-	char	*read;
-	char	**tmp;
-}	t_split;
+	int	i;
 
-#endif
+	i = 0;
+	while (str[i])
+	{
+		printf("msh: %s\n", str[i]);
+		i++;
+	}
+}
+
+void	ft_exit(t_split *s)
+{
+	if (!strncmp(s->read, "exit", 4))
+	{
+		free(s->tmp);
+		free(s->read);
+		exit (0);
+	}
+	else
+		return ;
+}

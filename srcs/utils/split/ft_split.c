@@ -6,11 +6,11 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/25 11:10:13 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/26 11:00:34 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/main.h"
+#include "../../../incs/main.h"
 
 int	ft_len(char *str)
 {
@@ -30,7 +30,7 @@ int	ft_len(char *str)
 	return (len + 1);
 }
 
-int	ft_len_spaces(char *str, int i)
+int	ft_len_spa(char *str, int i)
 {
 	int	len;
 
@@ -56,37 +56,31 @@ int	ft_len_spaces(char *str, int i)
 	return (len);
 }
 
-char	**ft_split(char *str, t_split *s)
+void	ft_init_split(t_split *s)
+{
+	s->k = 0;
+	s->len = ft_len(s->read);
+	s->tmp = (char **)malloc(sizeof(char *) * (s->len + 1));
+}
+
+char	**ft_split(t_split *s, char *str)
 {
 	int		i;
-	char	**tmp;
 
 	i = 0;
-	s->k = 0;
-	s->len = ft_len(str);
-	tmp = (char **)malloc(sizeof(char *) * (s->len + 1));
+	ft_init_split(s);
 	while (str[i])
 	{
 		i = ft_jump_spaces(str, i);
-		tmp[s->k] = (char *)malloc(sizeof(char) * (ft_len_spaces(str, i) + 1));
+		s->tmp[s->k] = (char *)malloc(sizeof(char) * (ft_len_spa(str, i) + 1));
 		s->i = i;
-		if (str[i] == 34)
-			tmp[s->k] = ft_comillas(tmp[s->k], str, s);
+		if (s->read[i] == 34)
+			s->tmp[s->k] = ft_comillas(s->tmp[s->k], s);
 		else
-			tmp[s->k] = ft_no_comillas(tmp[s->k], str, s);
+			s->tmp[s->k] = ft_no_comillas(s->tmp[s->k], s);
 		i = s->i;
 		s->k++;
 	}
-	tmp[s->k] = NULL;
-	free(tmp);
-	return (tmp);
-}
-
-char	**ft_split_init(char *str)
-{
-	char	**aux;
-	t_split	s;
-
-	aux = ft_split(str, &s);
-	return (aux);
+	s->tmp[s->k] = 0;
+	return (s->tmp);
 }

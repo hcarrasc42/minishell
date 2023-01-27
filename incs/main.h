@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/26 12:14:38 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/27 12:02:32 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
 # include "struct.h"
 
 // Srcs/Utils/utils.c
@@ -26,12 +27,16 @@ void			ft_exit(t_split *s);
 void			ft_print_msh(char **str);
 
 // Srcs/Utils/Split/ft_split.c
+int				ft_len(char *str);
+void			ft_init_split(t_split *s);
+int				ft_len_spa(char *str, t_split *s);
 char			**ft_split(t_split *s, char *str);
-char			*ft_split_core(char *tmp, t_split *s);
+char			*ft_split_core(t_split *s, char *tmp, char *str);
 
 // Srcs/Utils/Split/ft_split_utils.c
+int				ft_spaces(char *str, int i);
 int				ft_jump_spaces(char *str, int i);
-char			*ft_comillas(char *tmp, t_split *s);
-char			*ft_no_comillas(char *tmp, t_split *s);
-
+void			ft_len_while(t_split *s, char *str, int n);
+char			*ft_no_comillas(t_split *s, char *tmp, char *str);
+char			*ft_comillas(t_split *s, char *tmp, char *str, int n);
 #endif

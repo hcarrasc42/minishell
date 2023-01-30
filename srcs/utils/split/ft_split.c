@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/27 15:03:12 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:56:53 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 void	ft_init_split(t_split *s)
 {
 	s->i = 0;
-	s->k = 0;
 	s->j = 0;
+	s->k = 0;
+	s->y = 0;
+	s->com = 0;
 	s->len = 0;
 	s->ft_len = ft_len(s->read);
 	s->tmp = (char **)malloc(sizeof(char *) * (s->ft_len + 1));
@@ -84,6 +86,8 @@ char	**ft_split(t_split *s, char *str)
 		s->i = ft_jump_spaces(str, s->i);
 		s->tmp[s->k] = (char *)malloc(sizeof(char) * (ft_len_spa(str, s) + 1));
 		ft_split_core(s, s->tmp[s->k], str);
+		if (s->tmp[s->k][0] == 0)
+			s->k--;
 		s->k++;
 	}
 	s->tmp[s->k] = 0;

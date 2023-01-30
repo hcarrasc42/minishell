@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/27 12:02:32 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:22:00 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,8 @@ int				ft_jump_spaces(char *str, int i);
 void			ft_len_while(t_split *s, char *str, int n);
 char			*ft_no_comillas(t_split *s, char *tmp, char *str);
 char			*ft_comillas(t_split *s, char *tmp, char *str, int n);
+
+// Srcs/Utils/Pipex/ft_pipex.c
+void			ft_pipex(t_split *s);
+
 #endif

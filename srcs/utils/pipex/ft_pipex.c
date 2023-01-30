@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   ft_pipex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/30 10:15:20 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/01/30 09:52:41 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/01/30 11:26:22 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "../../../incs/main.h"
 
-typedef struct s_split
+void	ft_init_pipex(t_pipex *p)
 {
-	int		i;
-	int		j;
-	int		k;
-	int		y;
-	int		com;
-	int		len;
-	int		ft_len;
-	char	*read;
-	char	**tmp;
-}	t_split;
+	p->input = 0;
+	p->output = 0;
+}
 
-typedef struct s_pipex
+void	ft_pipex(t_split *s)
 {
-	int		input;
-	int		output;
-}	t_pipex;
+	t_pipex	p;
 
-#endif
+	ft_init_pipex(&p);
+}

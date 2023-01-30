@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:50:59 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/27 15:02:47 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:46:28 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ int	ft_jump_spaces(char *str, int i)
 
 char	*ft_comillas(t_split *s, char *tmp, char *str, int n)
 {
-	s->i++;
-	s->com = 1;
+	s->com = 0;
 	while (str[s->i])
 	{
 		if (str[s->i] == n)
+		{
+			tmp[s->j] = str[s->i];
+			s->j++;
+			s->i++;
 			s->com += 1;
+		}
 		if (s->com == 2)
 			break ;
 		while (str[s->i] && str[s->i] != n)
@@ -43,7 +47,6 @@ char	*ft_comillas(t_split *s, char *tmp, char *str, int n)
 			s->j++;
 		}
 	}
-	s->i++;
 	return (tmp);
 }
 
@@ -67,5 +70,5 @@ void	ft_len_while(t_split *s, char *str, int n)
 		s->len++;
 		s->y++;
 	}
-	s->len--;
+	s->len++;
 }

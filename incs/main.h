@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/31 12:50:13 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/31 14:34:29 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,14 @@
 
 // Srcs/ft_file.c
 int				ft_file(t_split *s, t_data *d);
+void			ft_file_0(t_data *d, char *s1);
+void			ft_init_file(t_data *d);
+int				ft_len_file(char *str);
 
 // Srcs/Utils/utils.c
 void			ft_exit(t_split *s);
 void			ft_print_msh(char **str);
+int				ft_len_split(t_split *s);
 
 // Srcs/Utils/Split/ft_split.c
 int				ft_len(char *str);
@@ -52,5 +56,7 @@ void			ft_pipex(t_split *s);
 // Srcs/Utils/libft
 int				ft_strncmp(char *str, char *cmp, int len);
 int				ft_strlen(char *str);
+
+void			ft_valid_file(t_data *d, t_split *s);
 
 #endif

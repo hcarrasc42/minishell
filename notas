@@ -1,0 +1,7 @@
+1-El primer arg el file y el segundo argumneto "<"
+1-Ejm:   (file.txt    < )
+           arg[0]   arg[1]
+
+2-El primer arg el file y el "<"
+2-Ejm:   (file.txt<)
+            arg[0]

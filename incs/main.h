@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/30 11:22:00 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:50:13 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <readline/history.h>
 
 # include "struct.h"
+
+# define IN 0
+# define OUT 1
+
+// Srcs/ft_file.c
+int				ft_file(t_split *s, t_data *d);
 
 // Srcs/Utils/utils.c
 void			ft_exit(t_split *s);
@@ -42,5 +48,9 @@ char			*ft_comillas(t_split *s, char *tmp, char *str, int n);
 
 // Srcs/Utils/Pipex/ft_pipex.c
 void			ft_pipex(t_split *s);
+
+// Srcs/Utils/libft
+int				ft_strncmp(char *str, char *cmp, int len);
+int				ft_strlen(char *str);
 
 #endif

@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/31 12:27:52 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/01/30 13:14:41 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/01/30 13:31:39 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/main.h"
+#include "../../../incs/main.h"
 
-void	minishell(t_split *s, t_data *d)
+int	ft_strncmp(char *str, char *cmp, int len)
 {
-	ft_exit(s);
-	add_history(s->read);
-	ft_split(s, s->read);
-	ft_print_msh(s->tmp);
-	ft_file(s, d);
-}
+	int	i;
 
-void	ft_readline(t_split *s, t_data *d)
-{
-	while (1)
+	i = 0;
+	while (i < len)
 	{
-		s->read = readline("minishell$> ");
-		minishell(s, d);
+		if (str[i] != cmp[i])
+			return (0);
+		i++;
 	}
-}
-
-int	main(void)
-{
-	t_split	split;
-	t_data	data;
-
-	ft_readline(&split, &data);
-	return (0);
+	return (1);
 }

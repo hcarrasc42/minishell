@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/30 10:15:20 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/01/31 12:25:45 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ typedef struct s_split
 	char	**tmp;
 }	t_split;
 
-typedef struct s_pipex
+typedef struct s_data
 {
 	int		input;
 	int		output;
-}	t_pipex;
+	char	**cmd;
+	char	**file;
+}	t_data;
 
 #endif

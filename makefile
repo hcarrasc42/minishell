@@ -6,7 +6,7 @@
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/01/30 11:24:36 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/01/31 13:25:26 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,12 @@ CFLAGS			=	-Wall -Werror -Wextra -g#3 -fsanitize=address
 SRCS			=	srcs/main.c											\
 					srcs/ft_error.c										\
 					srcs/utils/utils.c									\
+					srcs/utils/file/ft_file.c							\
+					srcs/utils/libft/ft_strlen.c						\
+					srcs/utils/libft/ft_strncmp.c						\
 					srcs/utils/split/ft_split.c							\
 					srcs/utils/split/ft_split_utils.c					\
-					#srcs/utils/pipex/ft_pipex.c							\
+					srcs/utils/pipex/ft_pipex.c							\
 
 OBJS			=	$(SRCS:.c=.o)
 PREFIXED	=	$(addprefix $(DIR_OBJS), $(OBJS))
@@ -28,8 +31,9 @@ PREFIXED	=	$(addprefix $(DIR_OBJS), $(OBJS))
 $(DIR_OBJS)%.o : %.c
 	@mkdir -p $(DIR_OBJS)/srcs
 	@mkdir -p $(DIR_OBJS)/srcs/utils
-	@mkdir -p $(DIR_OBJS)/srcs/utils/split
+	@mkdir -p $(DIR_OBJS)/srcs/utils/libft
 	@mkdir -p $(DIR_OBJS)/srcs/utils/pipex
+	@mkdir -p $(DIR_OBJS)/srcs/utils/split
 	@echo "${YELLOW}Compiling with >>${RESET} $(CC) $(CFLAGS):\t $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 

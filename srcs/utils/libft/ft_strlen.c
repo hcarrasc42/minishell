@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/31 12:27:52 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/01/30 14:04:55 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/01/31 10:27:12 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/main.h"
+#include "../../../incs/main.h"
 
-void	minishell(t_split *s, t_data *d)
+int	ft_strlen(char *str)
 {
-	ft_exit(s);
-	add_history(s->read);
-	ft_split(s, s->read);
-	ft_print_msh(s->tmp);
-	ft_file(s, d);
-}
+	int	len;
 
-void	ft_readline(t_split *s, t_data *d)
-{
-	while (1)
-	{
-		s->read = readline("minishell$> ");
-		minishell(s, d);
-	}
-}
-
-int	main(void)
-{
-	t_split	split;
-	t_data	data;
-
-	ft_readline(&split, &data);
-	return (0);
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

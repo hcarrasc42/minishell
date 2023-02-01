@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/31 13:33:21 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:32:19 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	ft_readline(t_split *s, t_data *d)
 	while (1)
 	{
 		s->read = readline("minishell$> ");
+		ft_error(s);
 		minishell(s, d);
 	}
 }

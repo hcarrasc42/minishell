@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:51:47 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/31 14:45:40 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:41:37 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,50 @@ void	ft_file_0(t_data *d, char *s1)
 	d->outfile[0][j] = '\0';
 }
 
-int	ft_len_file(char *str)
+int	ft_len_file(t_split *s)
 {
-	int	len;
+	int		len;
+	int		i;
+	int		j;
+	int		val;
+	int		k;
+	char	*str;
 
 	len = 0;
-	while (str[len] && str[len] != '<')
-		len++;
+	i = 0;
+	str = s->tmp;
+	val = 0;
+	while (str[i] && val == 0)
+	{
+		j = 0;
+		while (str[i][j])
+		{
+			if (str[i][j] == '<')
+			{
+				val = 1;
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
+	i--;
+	k = i;
+	while (str[i] && val == 1 && k - i > 1)
+	{
+		while (str[i][j])
+		{
+			if (str[i][j] == ' ' || str[i][j] == '\n' || str[i][j] == '\t')
+			{
+				val = 0;
+				break ;
+			}
+			len++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 	return (len);
 }
 

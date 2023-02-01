@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:28:22 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/31 14:43:25 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/01 17:48:10 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,51 @@ void	ft_infile(t_data *d, t_split *s)
 {
 	int		i;
 	int		j;
+	int		k;
+	int		y;
+	int		val;
 	char	*s1;
 	char	*s2;
 
 	i = 0;
-	j = 0;
+	val = 0;
 	s1 = s->tmp[0];
 	s2 = s->tmp[1];
-	d->infile[0] = (char *)malloc(sizeof(char) * (ft_len_file(s1) + 1));
+	d->infile[0] = (char *)malloc(sizeof(char) * (ft_len_file(s) + 1));
 	d->infile[1] = (char *)malloc(sizeof(char) * 2);
-	while (s1[i] && s1[i] != '<')
+	while (s->tmp[i] && val == 0)
 	{
-		d->infile[0][j] = s1[i];
-		j++;
+		j = 0;
+		while (s->tmp[i][j])
+		{
+			if (s->tmp[i][j] == '<')
+			{
+				val = 1;
+				break ;
+			}
+			j++;
+		}
 		i++;
 	}
-	d->infile[0][j] = '\0';
-	if (s1[i] == '\0')
-		d->infile[1][0] = s2[0];
-	else
-		d->infile[1][0] = s1[i];
+	i--;
+	k = i;
+	while (s->tmp[i] && val == 1 && k - i > 1)
+	{
+		y = 0;
+		while (s->tmp[i][j])
+		{
+			if (s->tmp[i][j] == ' ' || s->tmp[i][j] == '\n' || s->tmp[i][j] == '\t')
+			{
+				val = 0;
+				break ;
+			}
+			d->infile[0][y] = s->tmp[i][j];
+			y++;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
 }
 
 int	ft_file(t_split *s, t_data *d)

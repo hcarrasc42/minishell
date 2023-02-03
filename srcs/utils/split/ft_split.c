@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/03 12:45:10 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:55:47 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_len(char *str)
 	return (len + 1);
 }
 
-int	ft_len_spa(char *str, t_split *s)
+int	ft_lens(char *str, t_split *s)
 {
 	s->len = 0;
 	s->y = s->i;
@@ -60,7 +60,7 @@ int	ft_len_spa(char *str, t_split *s)
 	return (printf("len2: %d\n", s->len), s->len);
 }
 
-char	*ft_split_core(t_split *s, char *tmp, char *str)
+char	*ft_split_core(t_data *d, t_split *s, char *tmp, char *str)
 {
 	s->j = 0;
 	while (str[s->i])
@@ -68,24 +68,26 @@ char	*ft_split_core(t_split *s, char *tmp, char *str)
 		if (ft_spaces(str, s->i))
 			break ;
 		else if (str[s->i] == 39)
-			tmp = ft_comillas(s, tmp, str, 39);
+			ft_comillas(s, tmp, str, 39);
 		else if (str[s->i] == 34)
-			tmp = ft_comillas(s, tmp, str, 34);
+			ft_comillas(s, tmp, str, 34);
 		else if (str[s->i] != 34 && str[s->i] != 39)
-			tmp = ft_no_comillas(s, tmp, str);
+			ft_no_comillas(d, s, tmp, str);
 	}
-	tmp[s->j] = '\0';
+	if (d->val)
+		s->tmp[s->k][s->j] = '\0';
 	return (tmp);
 }
 
-char	**ft_split(t_split *s, char *str)
+char	**ft_split(t_data *d, t_split *s, char *str)
 {
 	ft_init_split(s);
 	while (str[s->i] != '\0' && s->val == 0 && ft_find_char(str, s->i))
 	{
 		s->i = ft_jump_spaces(str, s->i);
-		s->tmp[s->k] = (char *)malloc(sizeof(char) * (ft_len_spa(str, s) + 1));
-		ft_split_core(s, s->tmp[s->k], str);
+		if (str[s->i] != '<')
+			s->tmp[s->k] = (char *)malloc(sizeof(char) * (ft_lens(str, s) + 1));
+		ft_split_core(d, s, s->tmp[s->k], str);
 		if (s->tmp[s->k][0] == 0)
 			s->k--;
 		s->k++;

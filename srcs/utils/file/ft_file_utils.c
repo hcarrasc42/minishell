@@ -6,54 +6,41 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:51:47 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/03 12:30:41 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 15:27:47 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-void	ft_len_util(t_split *s, char c)
+int	ft_is_space(char c)
 {
-	int		val;
-
-	val = 0;
-	s->i = 0;
-	while (s->tmp[s->i] && val == 0)
-	{
-		s->j = 0;
-		while (s->tmp[s->i][s->j])
-		{
-			if (s->tmp[s->i][s->j] == c)
-			{
-				val = 1;
-				break ;
-			}
-			s->j++;
-		}
-		s->i++;
-	}
-	s->i--;
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	return (0);
 }
 
 int	ft_len_file(t_split *s, char c)
 {
 	int	len;
 	int	i;
-	int	j;
 
-	ft_len_util(s, c);
 	len = 0;
 	i = s->i;
-	j = s->j;
-	if (s->tmp[i][j + 1] == '\0' || s->tmp[i][j + 2] == '\0')
+	if (ft_is_space(s->read[i + 1])
+		|| (s->read[i + 1] == c && ft_is_space(s->read[i + 2])))
 	{
-		j = 0;
-		i++;
-	}
-	while (s->tmp[i][j])
-	{
+		if (s->read[i + 1] == c && ft_is_space(s->read[i + 2]))
+		{
+			i = i + 1;
+			len++;
+		}
+		i = i + 2;
 		len++;
-		j++;
+	}
+	while (s->read[i] && !ft_is_space(s->read[i]))
+	{
+		i++;
+		len++;
 	}
 	return (printf("filelen: %d\n", len), len);
 }

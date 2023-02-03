@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/03 12:40:48 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 14:46:33 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ int				ft_len_split(t_split *s);
 // Srcs/Utils/Split/ft_split.c
 int				ft_len(char *str);
 void			ft_init_split(t_split *s);
-int				ft_len_spa(char *str, t_split *s);
-char			**ft_split(t_split *s, char *str);
-char			*ft_split_core(t_split *s, char *tmp, char *str);
+int				ft_lens(char *str, t_split *s);
+char			**ft_split(t_data *d, t_split *s, char *str);
+char			*ft_split_core(t_data *d, t_split *s, char *tmp, char *str);
 
 // Srcs/Utils/Split/ft_split_utils.c
 int				ft_spaces(char *str, int i);
 int				ft_jump_spaces(char *str, int i);
 void			ft_len_while(t_split *s, char *str, int n);
-char			*ft_no_comillas(t_split *s, char *tmp, char *str);
+char			*ft_no_comillas(t_data *d, t_split *s, char *tmp, char *str);
 char			*ft_comillas(t_split *s, char *tmp, char *str, int n);
 
 // Srcs/Utils/Pipex/ft_pipex.c

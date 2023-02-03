@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:51:47 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/01 17:41:37 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:41:42 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,51 +36,50 @@ void	ft_file_0(t_data *d, char *s1)
 	d->outfile[0][j] = '\0';
 }
 
-int	ft_len_file(t_split *s)
+void	ft_len_util(t_split *s, char c)
 {
-	int		len;
-	int		i;
-	int		j;
 	int		val;
-	int		k;
-	char	*str;
 
-	len = 0;
-	i = 0;
-	str = s->tmp;
 	val = 0;
-	while (str[i] && val == 0)
+	s->i = 0;
+	while (s->tmp[s->i] && val == 0)
 	{
-		j = 0;
-		while (str[i][j])
+		s->j = 0;
+		while (s->tmp[s->i][s->j])
 		{
-			if (str[i][j] == '<')
+			if (s->tmp[s->i][s->j] == c)
 			{
 				val = 1;
 				break ;
 			}
-			j++;
+			s->j++;
 		}
-		i++;
+		s->i++;
 	}
-	i--;
-	k = i;
-	while (str[i] && val == 1 && k - i > 1)
+	s->i--;
+}
+
+int	ft_len_file(t_split *s)
+{
+	int	len;
+	int	i;
+	int	j;
+
+	ft_len_util(s, '<');
+	len = 0;
+	i = s->i;
+	j = s->j;
+	if (s->tmp[i][j + 1] == '\0' || s->tmp[i][j + 2] == '\0')
 	{
-		while (str[i][j])
-		{
-			if (str[i][j] == ' ' || str[i][j] == '\n' || str[i][j] == '\t')
-			{
-				val = 0;
-				break ;
-			}
-			len++;
-			j++;
-		}
 		j = 0;
 		i++;
 	}
-	return (len);
+	while (s->tmp[i][j])
+	{
+		len++;
+		j++;
+	}
+	return (printf("filelen: %d\n", len), len);
 }
 
 void	ft_init_file(t_data *d)
@@ -88,6 +87,5 @@ void	ft_init_file(t_data *d)
 	d->cmd = 0;
 	d->input = 0;
 	d->output = 0;
-	d->infile = (char **)malloc(sizeof(char *) * 3);
 	d->outfile = (char **)malloc(sizeof(char *) * 3);
 }

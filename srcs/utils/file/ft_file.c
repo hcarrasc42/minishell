@@ -6,13 +6,13 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:28:22 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/01 17:48:10 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:31:50 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-void	ft_outfile(t_data *d, t_split *s)
+/* void	ft_outfile(t_data *d, t_split *s)
 {
 	int		i;
 	int		j;
@@ -27,56 +27,44 @@ void	ft_outfile(t_data *d, t_split *s)
 	d->outfile[1] = (char *)malloc(sizeof(char) * 2);
 	ft_file_0(d, s1);
 }
+ */
+void	ft_infile_while(t_data *d, t_split *s, int y)
+{
+	while (s->tmp[s->i][s->j])
+	{
+		d->infile[y] = s->tmp[s->i][s->j];
+		printf("in: %c\n", d->infile[y]);
+		y++;
+		s->j++;
+	}
+	d->infile[y] = '\0';
+}
 
 void	ft_infile(t_data *d, t_split *s)
 {
-	int		i;
-	int		j;
-	int		k;
 	int		y;
-	int		val;
-	char	*s1;
-	char	*s2;
 
-	i = 0;
-	val = 0;
-	s1 = s->tmp[0];
-	s2 = s->tmp[1];
-	d->infile[0] = (char *)malloc(sizeof(char) * (ft_len_file(s) + 1));
-	d->infile[1] = (char *)malloc(sizeof(char) * 2);
-	while (s->tmp[i] && val == 0)
+	y = 0;
+	d->infile = (char *)malloc(sizeof(char) * (ft_len_file(s) + 1));
+	if (s->tmp[s->i][s->j + 1] == '\0')
 	{
-		j = 0;
-		while (s->tmp[i][j])
-		{
-			if (s->tmp[i][j] == '<')
-			{
-				val = 1;
-				break ;
-			}
-			j++;
-		}
-		i++;
+		d->infile[y] = s->tmp[s->i][s->j];
+		y++;
+		s->j = 0;
+		s->i++;
 	}
-	i--;
-	k = i;
-	while (s->tmp[i] && val == 1 && k - i > 1)
+	else if (s->tmp[s->i][s->j + 1] == '<' && s->tmp[s->i][s->j + 2] == '\0')
 	{
-		y = 0;
-		while (s->tmp[i][j])
+		while (s->tmp[s->i][s->j])
 		{
-			if (s->tmp[i][j] == ' ' || s->tmp[i][j] == '\n' || s->tmp[i][j] == '\t')
-			{
-				val = 0;
-				break ;
-			}
-			d->infile[0][y] = s->tmp[i][j];
+			d->infile[y] = s->tmp[s->i][s->j];
 			y++;
-			j++;
+			s->j++;
 		}
-		j = 0;
-		i++;
+		s->j = 0;
+		s->i++;
 	}
+	ft_infile_while(d, s, y);
 }
 
 int	ft_file(t_split *s, t_data *d)
@@ -85,16 +73,15 @@ int	ft_file(t_split *s, t_data *d)
 	{
 		ft_init_file(d);
 		ft_infile(d, s);
-		printf("infile: %s\n", d->infile[0]);
-		printf("sing1: %s\n", d->infile[1]);
-		if (d->val > 1)
+		printf("infile: %s\n", d->infile);
+		//printf("sing1: %s\n", d->infile[1]);
+		/* if (d->val > 1)
 		{
 			ft_outfile(d, s);
 			printf("outfile: %s\n", d->outfile[0]);
 			printf("sing2: %s\n", d->outfile[1]);
-		}
-		d->infile[3] = 0;
-		d->outfile[3] = 0;
+		} */
+		//d->outfile[3] = 0;
 	}
 	return (0);
 }

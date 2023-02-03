@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/01 15:26:29 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/02 09:52:43 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,5 @@ char	**ft_split(t_split *s, char *str)
 		s->k++;
 	}
 	s->tmp[s->k] = 0;
-	free(s->tmp);
 	return (s->tmp);
 }

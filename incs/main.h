@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/02 10:56:38 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:40:48 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@
 # define OUT 1
 
 // Srcs/ft_file.c
-int				ft_file(t_split *s, t_data *d);
-void			ft_file_0(t_data *d, char *s1);
+int				ft_file(t_data *d, t_split *s);
 void			ft_init_file(t_data *d);
-int				ft_len_file(t_split *s);
+int				ft_len_file(t_split *s, char c);
 
 // Srcs/Utils/utils.c
 void			ft_exit(t_split *s);
@@ -59,5 +58,6 @@ int				ft_strlen(char *str);
 
 void			ft_error(t_split *s);
 void			ft_valid_file(t_data *d, t_split *s);
+int				ft_find_char(char *str, int i);
 
 #endif

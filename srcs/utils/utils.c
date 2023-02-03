@@ -6,11 +6,22 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:42:46 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/01/31 14:39:45 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:40:22 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/main.h"
+
+int	ft_find_char(char *str, int i)
+{
+	while (str[i])
+	{
+		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 int	ft_len_split(t_split *s)
 {

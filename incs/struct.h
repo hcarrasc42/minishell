@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/02 10:37:18 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:03:58 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_data
 	int		output;
 	char	**cmd;
 	char	*infile;
-	char	**outfile;
+	char	*outfile;
 }	t_data;
 
 #endif

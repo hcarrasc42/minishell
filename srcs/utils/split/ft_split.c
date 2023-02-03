@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/02 09:52:43 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:45:10 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_split_core(t_split *s, char *tmp, char *str)
 char	**ft_split(t_split *s, char *str)
 {
 	ft_init_split(s);
-	while (str[s->i] != '\0' && s->val == 0)
+	while (str[s->i] != '\0' && s->val == 0 && ft_find_char(str, s->i))
 	{
 		s->i = ft_jump_spaces(str, s->i);
 		s->tmp[s->k] = (char *)malloc(sizeof(char) * (ft_len_spa(str, s) + 1));

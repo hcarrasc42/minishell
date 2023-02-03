@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/01 15:32:19 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:16:16 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	minishell(t_split *s, t_data *d)
 	ft_split(s, s->read);
 	ft_print_msh(s->tmp);
 	ft_valid_file(d, s);
-	ft_file(s, d);
+	ft_file(d, s);
 }
 
 void	ft_readline(t_split *s, t_data *d)

@@ -6,35 +6,11 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:51:47 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/02 12:41:42 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/03 12:30:41 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
-
-void	ft_file_0(t_data *d, char *s1)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (s1[i] == '>')
-	{
-		d->outfile[1][j] = s1[i];
-		i++;
-		j++;
-	}
-	d->outfile[1][j] = '\0';
-	j = 0;
-	while (s1[i])
-	{
-		d->outfile[0][j] = s1[i];
-		j++;
-		i++;
-	}
-	d->outfile[0][j] = '\0';
-}
 
 void	ft_len_util(t_split *s, char c)
 {
@@ -59,13 +35,13 @@ void	ft_len_util(t_split *s, char c)
 	s->i--;
 }
 
-int	ft_len_file(t_split *s)
+int	ft_len_file(t_split *s, char c)
 {
 	int	len;
 	int	i;
 	int	j;
 
-	ft_len_util(s, '<');
+	ft_len_util(s, c);
 	len = 0;
 	i = s->i;
 	j = s->j;
@@ -87,5 +63,4 @@ void	ft_init_file(t_data *d)
 	d->cmd = 0;
 	d->input = 0;
 	d->output = 0;
-	d->outfile = (char **)malloc(sizeof(char *) * 3);
 }

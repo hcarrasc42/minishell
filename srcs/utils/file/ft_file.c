@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:28:22 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/03 15:25:29 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:52:08 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,16 @@ void	ft_infile(t_data *d, t_split *s)
 
 	j = 0;
 	d->infile = (char *)malloc(sizeof(char) * (ft_len_file(s, '<') + 1));
-	if (ft_is_spaces(s->read[s->i + 1])
-		|| (s->read[s->i + 1] == '<' && ft_is_spaces(s->read[s->i + 2])))
+	while (s->read[s->i] == '<')
 	{
-		if (s->read[s->i + 1] == '<' && ft_is_spaces(s->read[s->i + 2]))
-		{
-			d->infile[j] = s->read[s->i];
-			s->i = s->i + 1;
-			j++;
-		}
 		d->infile[j] = s->read[s->i];
-		s->i = s->i + 2;
+		s->i++;
 		j++;
 	}
-	while (s->read[s->i] && !ft_is_spaces(s->read[s->i]))
+	while (ft_is_spaces(s->read[s->i]))
+		s->i++;
+	while (s->read[s->i] && !ft_is_spaces(s->read[s->i])
+		&& s->read[s->i] != '<')
 	{
 		d->infile[j] = s->read[s->i];
 		j++;

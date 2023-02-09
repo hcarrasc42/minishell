@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:50:59 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/03 14:56:05 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:52:46 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ int	ft_jump_spaces(char *str, int i)
 	return (i);
 }
 
-char	*ft_comillas(t_split *s, char *tmp, char *str, int n)
+char	*ft_comillas(t_data *d, t_split *s, char *str, int n)
 {
 	s->com = 0;
+	d->val = 1;
 	while (str[s->i])
 	{
 		if (str[s->i] == n)
@@ -47,26 +48,34 @@ char	*ft_comillas(t_split *s, char *tmp, char *str, int n)
 			s->j++;
 		}
 	}
-	return (tmp);
+	return (0);
 }
 
-char	*ft_no_comillas(t_data *d, t_split *s, char *tmp, char *str)
+char	*ft_no_comillas(t_data *d, t_split *s, char *str)
 {
-	d->val = 1;
-	if (str[s->i] == '<')
-	{
-		ft_file(d, s);
-		d->val = 0;
-		return (0);
-	}
 	while (str[s->i] && str[s->i] != '\n' && str[s->i] != ' '
 		&& str[s->i] != '\t' && str[s->i] != 34 && str[s->i] != 39)
 	{
+		if (str[s->i] == '<')
+		{
+			if (d->val)
+			{
+				s->tmp[s->k][s->j] = '\0';
+				s->k++;
+			}
+			if (d->va1)
+				s->k++;
+			ft_file(d, s);
+			d->va1 = 1;
+			return (0);
+		}
+		d->val = 1;
 		s->tmp[s->k][s->j] = str[s->i];
 		s->i++;
 		s->j++;
 	}
-	return (tmp);
+	d->val = 0;
+	return (0);
 }
 
 void	ft_len_while(t_split *s, char *str, int n)

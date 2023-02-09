@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/03 14:55:47 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/08 12:19:35 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,17 @@ int	ft_len(char *str)
 		i++;
 	while (str[i])
 	{
+		if (str[i] == '<')
+		{
+			while (str[i] == '<')
+				i++;
+			len++;
+		}
 		if (str[i] == '\n' || str[i] == ' ' || str[i] == '\t')
 			len++;
 		i++;
 	}
-	return (len + 1);
+	return (printf("LEN: %d\n", len + 1), len + 1);
 }
 
 int	ft_lens(char *str, t_split *s)
@@ -68,13 +74,13 @@ char	*ft_split_core(t_data *d, t_split *s, char *tmp, char *str)
 		if (ft_spaces(str, s->i))
 			break ;
 		else if (str[s->i] == 39)
-			ft_comillas(s, tmp, str, 39);
+			ft_comillas(d, s, str, 39);
 		else if (str[s->i] == 34)
-			ft_comillas(s, tmp, str, 34);
+			ft_comillas(d, s, str, 34);
 		else if (str[s->i] != 34 && str[s->i] != 39)
-			ft_no_comillas(d, s, tmp, str);
+			ft_no_comillas(d, s, str);
 	}
-	if (d->val)
+	if (d->val && !d->va1)
 		s->tmp[s->k][s->j] = '\0';
 	return (tmp);
 }

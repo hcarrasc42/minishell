@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:28:22 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/09 11:52:08 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:16:18 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,43 +19,29 @@ int	ft_is_spaces(char c)
 	return (0);
 }
 
-void	ft_outfile_while(t_data *d, t_split *s, int y)
-{
-	while (s->tmp[s->i][s->j])
-	{
-		d->outfile[y] = s->tmp[s->i][s->j];
-		printf("ou: %c\n", d->outfile[y]);
-		y++;
-		s->j++;
-	}
-	d->infile[y] = '\0';
-}
-
 void	ft_outfile(t_data *d, t_split *s)
 {
-	int	y;
+	int		j;
 
-	y = 0;
+	j = 0;
 	d->outfile = (char *)malloc(sizeof(char) * (ft_len_file(s, '>') + 1));
-	if (s->tmp[s->i][s->j + 1] == '\0')
+	while (s->read[s->i] == '>')
 	{
-		d->outfile[y] = s->tmp[s->i][s->j];
-		y++;
-		s->j = 0;
+		d->outfile[j] = s->read[s->i];
+		s->i++;
+		j++;
+	}
+	while (ft_is_spaces(s->read[s->i]))
+		s->i++;
+	while (s->read[s->i] && !ft_is_spaces(s->read[s->i])
+		&& s->read[s->i] != '<' && s->read[s->i] != '>')
+	{
+		d->outfile[j] = s->read[s->i];
+		j++;
 		s->i++;
 	}
-	else if (s->tmp[s->i][s->j + 1] == '>' && s->tmp[s->i][s->j + 2] == '\0')
-	{
-		while (s->tmp[s->i][s->j])
-		{
-			d->outfile[y] = s->tmp[s->i][s->j];
-			y++;
-			s->j++;
-		}
-		s->j = 0;
-		s->i++;
-	}
-	ft_outfile_while(d, s, y);
+	d->outfile[j] = '\0';
+	s->tmp[s->k] = d->outfile;
 }
 
 void	ft_infile(t_data *d, t_split *s)
@@ -73,7 +59,7 @@ void	ft_infile(t_data *d, t_split *s)
 	while (ft_is_spaces(s->read[s->i]))
 		s->i++;
 	while (s->read[s->i] && !ft_is_spaces(s->read[s->i])
-		&& s->read[s->i] != '<')
+		&& s->read[s->i] != '<' && s->read[s->i] != '>')
 	{
 		d->infile[j] = s->read[s->i];
 		j++;
@@ -86,12 +72,15 @@ void	ft_infile(t_data *d, t_split *s)
 int	ft_file(t_data *d, t_split *s)
 {
 	ft_init_file(d);
-	ft_infile(d, s);
+	if (s->read[s->i] == '<')
+	{
+		d->in = 1;
+		ft_infile(d, s);
+	}
+	else
+	{
+		d->out = 1;
+		ft_outfile(d, s);
+	}
 	return (0);
 }
-		/* if (d->val > 1)
-		{
-			ft_outfile(d, s);
-			printf("outfile: %s\n", d->outfile);
-		}
- */

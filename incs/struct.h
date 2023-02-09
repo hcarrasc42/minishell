@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/08 11:30:47 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:19:43 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct s_split
 
 typedef struct s_data
 {
+	int		in;
+	int		out;
 	int		val;
-	int		va1;
 	int		input;
 	int		output;
 	char	**cmd;

@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:50:59 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/09 11:52:46 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:16:48 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,27 @@ int	ft_spaces(char *str, int i)
 {
 	if (str[i] == '\0' || str[i] == '\n' || str[i] == ' ' || str[i] == '\t')
 		return (1);
+	return (0);
+}
+
+int	ft_fumada(t_split *s, char *str)
+{
+	int	i;
+
+	i = s->i;
+	while (str[i] == '<' || str[i] == '>')
+		i++;
+	while (str[i])
+	{
+		if (str[i] == '\n' || str[i] == ' ' || str[i] == '\t')
+			return (0);
+		if (str[i] == '<' || str[i] == '>')
+		{
+			s->k++;
+			return (1);
+		}
+		i++;
+	}
 	return (0);
 }
 
@@ -56,17 +77,17 @@ char	*ft_no_comillas(t_data *d, t_split *s, char *str)
 	while (str[s->i] && str[s->i] != '\n' && str[s->i] != ' '
 		&& str[s->i] != '\t' && str[s->i] != 34 && str[s->i] != 39)
 	{
-		if (str[s->i] == '<')
+		if (str[s->i] == '<' || str[s->i] == '>')
 		{
 			if (d->val)
 			{
+
 				s->tmp[s->k][s->j] = '\0';
 				s->k++;
 			}
-			if (d->va1)
-				s->k++;
+			if (d->in)
+				ft_fumada(s, str);
 			ft_file(d, s);
-			d->va1 = 1;
 			return (0);
 		}
 		d->val = 1;
@@ -74,7 +95,6 @@ char	*ft_no_comillas(t_data *d, t_split *s, char *str)
 		s->i++;
 		s->j++;
 	}
-	d->val = 0;
 	return (0);
 }
 

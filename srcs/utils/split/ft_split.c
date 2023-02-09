@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/08 12:19:35 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/09 14:16:12 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	ft_len(char *str)
 		i++;
 	while (str[i])
 	{
-		if (str[i] == '<')
+		if (str[i] == '<' || str[i] == '>')
 		{
-			while (str[i] == '<')
+			while (str[i] == '<' || str[i] == '>')
 				i++;
 			len++;
 		}
@@ -80,8 +80,9 @@ char	*ft_split_core(t_data *d, t_split *s, char *tmp, char *str)
 		else if (str[s->i] != 34 && str[s->i] != 39)
 			ft_no_comillas(d, s, str);
 	}
-	if (d->val && !d->va1)
+	if (d->val && !d->in)
 		s->tmp[s->k][s->j] = '\0';
+	d->val = 0;
 	return (tmp);
 }
 
@@ -91,7 +92,7 @@ char	**ft_split(t_data *d, t_split *s, char *str)
 	while (str[s->i] != '\0' && s->val == 0 && ft_find_char(str, s->i))
 	{
 		s->i = ft_jump_spaces(str, s->i);
-		if (str[s->i] != '<')
+		if (str[s->i] != '<' && str[s->i] != '>')
 			s->tmp[s->k] = (char *)malloc(sizeof(char) * (ft_lens(str, s) + 1));
 		ft_split_core(d, s, s->tmp[s->k], str);
 		if (s->tmp[s->k][0] == 0)

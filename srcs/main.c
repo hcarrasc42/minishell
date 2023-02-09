@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/09 11:24:51 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:21:14 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	ft_init_file(t_data *d)
 	d->input = 0;
 	d->output = 0;
 	d->val = 0;
-	d->va1 = 0;
+	d->in = 0;
+	d->out = 0;
 	d->outfile = 0;
 	d->infile = 0;
 }

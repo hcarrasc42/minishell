@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:20:56 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/17 14:16:09 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:44:35 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,15 @@
 int	ft_cmd_len(t_split *s, int i)
 {
 	int	len;
-	int	j;
 
-	if (s->tmp[i] != '')
-	while (t->tmp[i])
+	len = 0;
+	if (ft_strncmp(s->tmp[i], "|", 1))
+		i++;
+	while (s->tmp[i] && !ft_strncmp(s->tmp[i], "|", 1))
+	{
+		i++;
+		len++;
+	}
 	return (len);
 }
 
@@ -50,11 +55,20 @@ void	ft_split_pipe(t_data *d, t_split *s)
 	i = 0;
 	j = 0;
 	spl = (char ***)malloc(sizeof(char **) * (ft_pipe_len(s) + 1));
+	printf("cmd_len: %d\n", ft_cmd_len(s, i));
 	while (s->tmp[i])
 	{
-		if (ft_strncmp(s->tmp[i], "|", 1))
+		j = 0;
+		if (ft_strncmp(s->tmp[i], "|", 1) && i++)
 			k++;
-		spl = (char **)malloc(sizeof(char *) * (ft_cmd_len(s, i)));
+		spl[k] = (char **)malloc(sizeof(char *) * (ft_cmd_len(s, i) + 1));
+		while (j < ft_cmd_len(s, i))
+		{
+			spl[k][j] = ft_strdup(s->tmp[i]);
+			i++;
+			j++;
+		}
+		spl[k][j] = 0;
 	}
 	spl[k] = NULL;
 }

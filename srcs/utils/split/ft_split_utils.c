@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:50:59 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/09 14:16:48 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:21:58 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ char	*ft_no_comillas(t_data *d, t_split *s, char *str)
 		{
 			if (d->val)
 			{
-
 				s->tmp[s->k][s->j] = '\0';
 				s->k++;
 			}

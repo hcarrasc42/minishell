@@ -1,47 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/10 10:25:58 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/02/15 15:15:48 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/02/16 11:14:36 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCT_H
-# define STRUCT_H
+#include "../../../incs/main.h"
 
-typedef struct s_split
+int	ft_len_dup(char *s1)
 {
+	int	i;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(char *s1)
+{
+	char	*tmp;
 	int		i;
-	int		j;
-	int		k;
-	int		y;
-	int		com;
-	int		len;
-	int		val;
-	int		ft_len;
-	char	*read;
-	char	**tmp;
-}	t_split;
 
-typedef struct s_data
-{
-	int		in;
-	int		out;
-	int		val;
-	int		input;
-	int		output;
-	char	**cmd;
-	char	*infile;
-	char	*outfile;
-}	t_data;
-
-typedef struct s_path
-{
-	char	*path;
-}	t_path;
-
-#endif
+	i = 0;
+	tmp = (char *)malloc(sizeof(char) * (ft_len_dup(s1)));
+	while (s1[i])
+	{
+		tmp[i] = s1[i];
+		i++;
+	}
+	tmp[i] = '\0';
+	return (tmp);
+}

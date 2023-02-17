@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/08 11:32:24 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/17 13:38:51 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,10 @@ int				ft_strlen(char *str);
 void			ft_error(t_split *s);
 void			ft_valid_file(t_data *d, t_split *s);
 int				ft_find_char(char *str, int i);
+void			ft_ejecutar_pro(t_split *s, char **env);
+int				ft_strncmp1(const char *s1, const char *s2, size_t n);
+void			ft_split_pipe(t_data *d, t_split *s);
+char			*ft_strdup(char *s1);
+void			ft_read_pipe(t_split *s);
 
 #endif

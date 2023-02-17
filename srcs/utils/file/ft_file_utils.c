@@ -6,11 +6,23 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:51:47 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/08 12:11:30 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:46:45 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
+
+void	ft_init_file(t_data *d)
+{
+	d->cmd = 0;
+	d->input = 0;
+	d->output = 0;
+	d->val = 0;
+	d->in = 0;
+	d->out = 0;
+	d->outfile = 0;
+	d->infile = 0;
+}
 
 int	ft_is_space(char c)
 {

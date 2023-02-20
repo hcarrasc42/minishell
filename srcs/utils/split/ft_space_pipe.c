@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_pipe.c                                     :+:      :+:    :+:   */
+/*   ft_space_pipe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:56:12 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/17 13:44:28 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:41:52 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/main.h"
+#include "../../../incs/main.h"
 
 int	ft_lspa(char *str, int i)
 {
@@ -45,55 +45,44 @@ int	ft_line_len(char *str)
 	return (len);
 }
 
-void	ft_read_pipe(t_split *s)
+void	ft_comillas_pipe(t_split *s, int type)
 {
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	j = 0;
-	str = (char *)malloc(sizeof(char) * (ft_line_len(s->read) + 1));
-	while (s->read[i])
+	s->str[s->j] = s->read[s->i];
+	s->j++;
+	s->i++;
+	while (s->read[s->i] != type)
 	{
-		if (s->read[i] == 34)
-		{
-			str[j] = s->read[i];
-			j++;
-			i++;
-			while (s->read[i] != 34)
-			{
-				str[j] = s->read[i];
-				j++;
-				i++;
-			}
-		}
-		if (s->read[i] == 39)
-		{
-			str[j] = s->read[i];
-			j++;
-			i++;
-			while (s->read[i] != 39)
-			{
-				str[j] = s->read[i];
-				j++;
-				i++;
-			}
-		}
-		if (s->read[i] == '|' && !ft_lspa(s->read, i - 1))
-		{
-			str[j] = ' ';
-			j++;
-		}
-		str[j] = s->read[i];
-		j++;
-		if (s->read[i] == '|' && !ft_lspa(s->read, i + 1))
-		{
-			str[j] = ' ';
-			j++;
-		}
-		i++;
+		s->str[s->j] = s->read[s->i];
+		s->j++;
+		s->i++;
 	}
-	str[j] = '\0';
-	s->read = str;
+}
+
+void	ft_space_pipe(t_split *s)
+{
+	s->i = 0;
+	s->j = 0;
+	s->str = (char *)malloc(sizeof(char) * (ft_line_len(s->read) + 1));
+	while (s->read[s->i])
+	{
+		if (s->read[s->i] == 34)
+			ft_comillas_pipe(s, 34);
+		if (s->read[s->i] == 39)
+			ft_comillas_pipe(s, 39);
+		if (s->read[s->i] == '|' && !ft_lspa(s->read, s->i - 1))
+		{
+			s->str[s->j] = ' ';
+			s->j++;
+		}
+		s->str[s->j] = s->read[s->i];
+		s->j++;
+		if (s->read[s->i] == '|' && !ft_lspa(s->read, s->i + 1))
+		{
+			s->str[s->j] = ' ';
+			s->j++;
+		}
+		s->i++;
+	}
+	s->str[s->j] = '\0';
+	s->read = s->str;
 }

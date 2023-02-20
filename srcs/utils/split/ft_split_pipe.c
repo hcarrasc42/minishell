@@ -6,11 +6,29 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:20:56 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/17 15:44:35 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/20 11:54:52 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
+
+void	ft_print_split_pipe(char ***spl)
+{
+	int	k;
+	int	j;
+
+	k = 0;
+	while (spl[k])
+	{
+		j = 0;
+		while (spl[k][j])
+		{
+			printf("spl(%d): %s\n", k, spl[k][j]);
+			j++;
+		}
+		k++;
+	}
+}
 
 int	ft_cmd_len(t_split *s, int i)
 {
@@ -24,7 +42,7 @@ int	ft_cmd_len(t_split *s, int i)
 		i++;
 		len++;
 	}
-	return (len);
+	return (printf("cmd_len: %d\n", len), len);
 }
 
 int	ft_pipe_len(t_split *s)
@@ -45,58 +63,29 @@ int	ft_pipe_len(t_split *s)
 
 void	ft_split_pipe(t_data *d, t_split *s)
 {
-	char	***spl;
+	char	***aux;
 	int		k;
 	int		i;
 	int		j;
 
-	d->val = 0;
 	k = 0;
 	i = 0;
-	j = 0;
-	spl = (char ***)malloc(sizeof(char **) * (ft_pipe_len(s) + 1));
-	printf("cmd_len: %d\n", ft_cmd_len(s, i));
+	aux = (char ***)malloc(sizeof(char **) * (ft_pipe_len(s) + 1));
+	aux[ft_pipe_len(s) + 1] = NULL;
 	while (s->tmp[i])
 	{
 		j = 0;
 		if (ft_strncmp(s->tmp[i], "|", 1) && i++)
 			k++;
-		spl[k] = (char **)malloc(sizeof(char *) * (ft_cmd_len(s, i) + 1));
-		while (j < ft_cmd_len(s, i))
+		d->val = ft_cmd_len(s, i);
+		aux[k] = (char **)malloc(sizeof(char *) * (d->val + 1));
+		aux[k][d->val] = NULL;
+		while (d->val-- > 0)
 		{
-			spl[k][j] = ft_strdup(s->tmp[i]);
-			i++;
+			aux[k][j] = ft_strdup(s->tmp[i]);
 			j++;
+			i++;
 		}
-		spl[k][j] = 0;
 	}
-	spl[k] = NULL;
+	d->spl = aux;
 }
-
-/* while (s->tmp[i])
-	{
-		j = 0;
-		if (s->tmp[i][j] == '|')
-		spl[k] = (char **)malloc(sizeof(char *) * (ft_cmd_len(s, i) + 1));
-		while (j < ft_cmd_len(s, i))
-		{
-			spl[k][j] = ft_strdup(s->tmp[i]);
-			j++;
-			i++;
-		}
-		printf("i: %d\n", i);
-		spl[k][j] = NULL;
-		k++;
-	}
-	spl[k] = NULL;
-	k = 0;
-	j = 0;
-	while (spl[k])
-	{
-		while (spl[k][j])
-		{
-			printf("spl(%d): %s\n", k, spl[k][j]);
-			j++;
-		}
-		k++;
-	} */

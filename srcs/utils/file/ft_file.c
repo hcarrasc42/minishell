@@ -6,18 +6,11 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:28:22 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/10 10:37:03 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:40:18 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
-
-int	ft_is_spaces(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	return (0);
-}
 
 void	ft_outfile(t_data *d, t_split *s)
 {
@@ -31,9 +24,9 @@ void	ft_outfile(t_data *d, t_split *s)
 		s->i++;
 		j++;
 	}
-	while (ft_is_spaces(s->read[s->i]))
+	while (ft_is_space_char(s->read[s->i]))
 		s->i++;
-	while (s->read[s->i] && !ft_is_spaces(s->read[s->i])
+	while (s->read[s->i] && !ft_is_space_char(s->read[s->i])
 		&& s->read[s->i] != '<' && s->read[s->i] != '>')
 	{
 		d->outfile[j] = s->read[s->i];
@@ -56,9 +49,9 @@ void	ft_infile(t_data *d, t_split *s)
 		s->i++;
 		j++;
 	}
-	while (ft_is_spaces(s->read[s->i]))
+	while (ft_is_space_char(s->read[s->i]))
 		s->i++;
-	while (s->read[s->i] && !ft_is_spaces(s->read[s->i])
+	while (s->read[s->i] && !ft_is_space_char(s->read[s->i])
 		&& s->read[s->i] != '<' && s->read[s->i] != '>')
 	{
 		d->infile[j] = s->read[s->i];

@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:51:47 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/10 10:46:45 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:40:40 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_init_file(t_data *d)
 {
-	d->cmd = 0;
 	d->input = 0;
 	d->output = 0;
 	d->val = 0;
@@ -24,7 +23,7 @@ void	ft_init_file(t_data *d)
 	d->infile = 0;
 }
 
-int	ft_is_space(char c)
+int	ft_is_space_char(char c)
 {
 	if (c == ' ' || c == '\t' || c == '\n')
 		return (1);
@@ -43,9 +42,9 @@ int	ft_len_file(t_split *s, char c)
 		i++;
 		len++;
 	}
-	while (ft_is_space(s->read[i]))
+	while (ft_is_space_char(s->read[i]))
 		i++;
-	while (s->read[i] && !ft_is_space(s->read[i]) && s->read[i] != c)
+	while (s->read[i] && !ft_is_space_char(s->read[i]) && s->read[i] != c)
 	{
 		i++;
 		len++;

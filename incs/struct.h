@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/10 10:25:58 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:23:22 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_split
 	int		len;
 	int		val;
 	int		ft_len;
+	char	*str;
 	char	*read;
 	char	**tmp;
 }	t_split;
@@ -34,9 +35,9 @@ typedef struct s_data
 	int		val;
 	int		input;
 	int		output;
-	char	**cmd;
 	char	*infile;
 	char	*outfile;
+	char	***spl;
 }	t_data;
 
 typedef struct s_path

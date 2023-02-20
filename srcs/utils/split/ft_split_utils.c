@@ -6,20 +6,20 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:50:59 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/15 13:21:58 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:31:36 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-int	ft_spaces(char *str, int i)
+int	ft_jump_spaces(char *str, int i)
 {
-	if (str[i] == '\0' || str[i] == '\n' || str[i] == ' ' || str[i] == '\t')
-		return (1);
-	return (0);
+	while (ft_spaces(str, i))
+		i++;
+	return (i);
 }
 
-int	ft_fumada(t_split *s, char *str)
+int	ft_infile_outfile(t_split *s, char *str)
 {
 	int	i;
 
@@ -38,13 +38,6 @@ int	ft_fumada(t_split *s, char *str)
 		i++;
 	}
 	return (0);
-}
-
-int	ft_jump_spaces(char *str, int i)
-{
-	while (ft_spaces(str, i))
-		i++;
-	return (i);
 }
 
 char	*ft_comillas(t_data *d, t_split *s, char *str, int n)
@@ -85,7 +78,7 @@ char	*ft_no_comillas(t_data *d, t_split *s, char *str)
 				s->k++;
 			}
 			if (d->in)
-				ft_fumada(s, str);
+				ft_infile_outfile(s, str);
 			ft_file(d, s);
 			return (0);
 		}

@@ -6,11 +6,18 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:42:46 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/03 12:40:22 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/20 12:43:30 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/main.h"
+
+int	ft_spaces(char *str, int i)
+{
+	if (str[i] == '\0' || str[i] == '\n' || str[i] == ' ' || str[i] == '\t')
+		return (1);
+	return (0);
+}
 
 int	ft_find_char(char *str, int i)
 {
@@ -53,27 +60,5 @@ void	ft_exit(t_split *s)
 	{
 		free(s->read);
 		exit (0);
-	}
-}
-
-void	ft_valid_file(t_data *d, t_split *s)
-{
-	int		i;
-	int		j;
-	char	**str;
-
-	i = 0;
-	d->val = 0;
-	str = s->tmp;
-	while (str[i])
-	{
-		j = 0;
-		while (str[i][j])
-		{
-			if (str[i][j] == '<' || str[i][j] == '>')
-				d->val += 1;
-			j++;
-		}
-		i++;
 	}
 }

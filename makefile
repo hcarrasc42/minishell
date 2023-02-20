@@ -6,7 +6,7 @@
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/02/17 13:39:03 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/02/20 12:17:50 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,6 @@ CFLAGS			=	-Wall -Werror -Wextra -g#3 -fsanitize=address
 
 SRCS			=	srcs/main.c											\
 					srcs/ft_error.c										\
-					srcs/ft_read_pipe.c									\
 					srcs/utils/utils.c									\
 					srcs/utils/file/ft_file.c							\
 					srcs/utils/file/ft_file_utils.c						\
@@ -27,6 +26,7 @@ SRCS			=	srcs/main.c											\
 					srcs/utils/pipex/ft_get_path.c						\
 					srcs/utils/split/ft_split.c							\
 					srcs/utils/split/ft_split_pipe.c					\
+					srcs/utils/split/ft_space_pipe.c					\
 					srcs/utils/split/ft_split_utils.c					\
 					srcs/utils/pipex/ft_pipex.c							\
 

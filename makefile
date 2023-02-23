@@ -6,29 +6,34 @@
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/02/20 12:17:50 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/02/23 13:31:02 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	minishell
 DIR_OBJS		=	objs/
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra -g#3 -fsanitize=address
+CFLAGS			=	#-Wall -Werror -Wextra -g#3 -fsanitize=address
 
 SRCS			=	srcs/main.c											\
 					srcs/ft_error.c										\
 					srcs/utils/utils.c									\
 					srcs/utils/file/ft_file.c							\
 					srcs/utils/file/ft_file_utils.c						\
+					srcs/utils/libft/ft_arrlen.c						\
 					srcs/utils/libft/ft_strlen.c						\
 					srcs/utils/libft/ft_strdup.c						\
 					srcs/utils/libft/ft_strncmp.c						\
+					srcs/utils/libft/ft_arrsplit.c						\
+					srcs/utils/libft/ft_strremove.c						\
 					srcs/utils/pipex/ft_get_path.c						\
 					srcs/utils/split/ft_split.c							\
 					srcs/utils/split/ft_split_pipe.c					\
 					srcs/utils/split/ft_space_pipe.c					\
 					srcs/utils/split/ft_split_utils.c					\
 					srcs/utils/pipex/ft_pipex.c							\
+					srcs/utils/pipex/ft_msh_pipex.c						\
+					srcs/utils/pipex/ft_pipex_utils.c					\
 
 OBJS			=	$(SRCS:.c=.o)
 PREFIXED	=	$(addprefix $(DIR_OBJS), $(OBJS))

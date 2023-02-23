@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strremove.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 15:15:48 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/22 11:03:11 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/02/23 13:28:12 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/02/23 13:32:16 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-char	*ft_strdup(char *s1)
+char	**ft_strremover(char **spl)
 {
-	char	*tmp;
 	int		i;
+	int		j;
 
 	i = 0;
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	while (s1[i])
+	while (spl[i])
 	{
-		tmp[i] = s1[i];
+		if (spl[i][0] == '<' || spl[i][0] == '>')
+		{
+			j = 0;
+			while (spl[i][j])
+			{
+				spl[i][j] = ' ';
+				j++;
+			}
+		}
 		i++;
 	}
-	tmp[i] = '\0';
-	return (tmp);
+	return (ft_arrsplit(spl, ' '));
 }

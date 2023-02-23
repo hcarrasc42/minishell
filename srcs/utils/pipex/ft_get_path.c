@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 10:23:09 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/13 13:55:52 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/23 12:18:55 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,6 @@ char	*get_path(char *cmd, char **env)
 	{
 		dir = str_ndup(path, str_ichr(path, ':'));
 		bin = path_join(dir, cmd);
-		printf("bin: %s\n", bin);
 		free(dir);
 		if (access(bin, F_OK) == 0)
 			return (bin);

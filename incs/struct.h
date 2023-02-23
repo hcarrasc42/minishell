@@ -6,12 +6,22 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/20 12:23:22 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/21 11:02:42 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
+
+typedef struct s_bonus
+{
+	pid_t	pid;
+	int		fd[2];
+	int		fdin;
+	int		fdout;
+	char	*path;
+	char	**cmd;
+}		t_bonus;
 
 typedef struct s_split
 {

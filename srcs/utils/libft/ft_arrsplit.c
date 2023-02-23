@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_arrsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 15:15:48 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/22 11:03:11 by hcarrasc         ###   ########.fr       */
+/*   Created: 2023/02/23 13:23:08 by hcarrasc          #+#    #+#             */
+/*   Updated: 2023/02/23 13:33:16 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-char	*ft_strdup(char *s1)
+char	**ft_arrsplit(char **spl, char c)
 {
-	char	*tmp;
 	int		i;
+	char	**tmp;
 
 	i = 0;
-	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	while (s1[i])
+	tmp = (char **)malloc(sizeof(char *) * (ft_arrlen(spl) + 1));
+	while (spl[i])
 	{
-		tmp[i] = s1[i];
+		if (spl[i][0] == c)
+			i++;
+		tmp[i] = ft_strdup(spl[i]);
 		i++;
 	}
-	tmp[i] = '\0';
 	return (tmp);
 }

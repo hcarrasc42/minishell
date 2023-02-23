@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/20 12:44:07 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:32:51 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 # define MAIN_H
 
 # include <stdio.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
 # include "struct.h"
 
-# define IN 0
-# define OUT 1
+# define STDIN 0
+# define STDOUT 1
+# define STDERR 2
+
+# define INFILE 0
+# define OUTFILE 1
 
 					// FILE //
 // Srcs/Utils/file
@@ -33,12 +39,22 @@ int				ft_file(t_data *d, t_split *s);
 int				ft_len_file(t_split *s, char c);
 
 					// LIBFT //
+char			*ft_strdup(char *s1);
 int				ft_strlen(char *str);
+int				ft_arrlen(char **str);
+char			**ft_strremover(char **spl);
+char			**ft_arrsplit(char **spl, char c);
 int				ft_strncmp(char *str, char *cmp, int len);
 
 					// PIPEX //
 // Srcs/Utils/Pipex/ft_pipex.c
-void			ft_pipex(t_split *s);
+int				str_ichr(char *str, char c);
+char			*get_path(char *cmd, char **env);
+char			**str_split(char *str, char sep);
+char			*str_ndup(char *str, unsigned int n);
+char			*ft_file_finder(char ***spl, int nb);
+int				ft_pipex(t_split *s, char ***spl, char **env);
+int				ft_msh_pipex(t_split *s, char ***spl, char **env);
 
 					// SPLIT //
 // Srcs/Utils/Split/ft_split.c
@@ -66,7 +82,6 @@ int				ft_spaces(char *str, int i);
 void			ft_error(t_split *s);
 int				ft_find_char(char *str, int i);
 int				ft_strncmp1(const char *s1, const char *s2, size_t n);
-char			*ft_strdup(char *s1);
 void			ft_space_pipe(t_split *s);
 
 #endif

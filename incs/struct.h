@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/23 16:39:50 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:26:31 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_data
 	int		in;
 	int		out;
 	int		val;
+	int		len;
 	int		input;
 	int		output;
 	char	*infile;

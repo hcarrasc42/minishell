@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:10:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 09:21:43 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:12:38 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_exceve(t_pipex *p, char **spl, int i, char **env)
 	char	*path;
 	char	**cmd;
 
+	printf("entra\n");
 	cmd = ft_strremover(spl);
 	path = get_path(cmd[0], env);
 	printf("path: %s\n", path);
@@ -41,7 +42,7 @@ void	ft_exceve(t_pipex *p, char **spl, int i, char **env)
 	execve(path, cmd, env);
 }
 
-int	ft_msh_pipex(t_pipex *p, char ***spl, char **env)
+int	ft_msh_pipex(t_pipex *p, char **env)
 {
 	int		i;
 	int		tmp[2];
@@ -49,8 +50,8 @@ int	ft_msh_pipex(t_pipex *p, char ***spl, char **env)
 	i = 0;
 	tmp[0] = dup(STDIN);
 	tmp[1] = dup(STDOUT);
-	p->fdin = open(ft_file_finder(spl, 0), O_RDONLY);
-	p->fdout = open(ft_file_finder(spl, 1), O_RDONLY);
+	p->fdin = open(ft_file_finder(p->spl, 0), O_RDONLY);
+	p->fdout = open(ft_file_finder(p->spl, 1), O_WRONLY | O_CREAT, 777);
 	if (p->fdin > 0)
 		dup2(p->fdin, STDIN);
 	if (p->fdout > 0)
@@ -59,7 +60,7 @@ int	ft_msh_pipex(t_pipex *p, char ***spl, char **env)
 	{
 		p->pid = fork();
 		if (p->pid == 0)
-			ft_exceve(p, spl[i], i, env);
+			ft_exceve(p, p->spl[i], i, env);
 		ft_close(p, i);
 		waitpid(p->pid, NULL, 0);
 		i++;
@@ -82,6 +83,6 @@ void	ft_genereal(t_pipex *p, char **env)
 		pipe(p->fd[i]);
 		i++;
 	}
-	ft_msh_pipex(p, p->spl, env);
+	ft_msh_pipex(p, env);
 	free(p->fd);
 }

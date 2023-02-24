@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:14:35 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/23 13:16:09 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:02:33 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ int	ft_arrlen(char **str)
 	len = 0;
 	while (str[len])
 		len++;
-	return (len);
+	return (printf("arrlen: %d\n", len), len);
 }

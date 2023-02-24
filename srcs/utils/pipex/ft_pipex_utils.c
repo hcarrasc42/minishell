@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:56:40 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 09:14:21 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:51:10 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_file_strdup(char *s1)
 		j++;
 	}
 	tmp[j] = '\0';
-	return (tmp);
+	return (printf("ft_file: %s\n", tmp), tmp);
 }
 
 char	*ft_file_finder(char ***spl, int nb)

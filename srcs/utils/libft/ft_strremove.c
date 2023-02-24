@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:28:12 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 10:41:30 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:12:33 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,22 @@ char	**ft_strremover(char **spl)
 {
 	int		i;
 	int		j;
+	char	**aux;
 
 	i = 0;
-	while (spl[i])
+	aux = spl;
+	while (aux[i])
 	{
-		if (spl[i][0] == '<' || spl[i][0] == '>')
+		if (aux[i][0] == '<' || aux[i][0] == '>')
 		{
 			j = 0;
-			while (spl[i][j])
+			while (aux[i][j])
 			{
-				spl[i][j] = ' ';
+				aux[i][j] = ' ';
 				j++;
 			}
 		}
 		i++;
 	}
-	return (ft_arrsplit(spl, ' '));
+	return (ft_arrsplit(aux, ' '));
 }

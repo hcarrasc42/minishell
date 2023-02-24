@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 08:38:28 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 12:10:40 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char			**str_split(char *str, char sep);
 char			*str_ndup(char *str, unsigned int n);
 char			*ft_file_finder(char ***spl, int nb);
 int				ft_pipex(t_split *s, char ***spl, char **env);
-int				ft_msh_pipex(t_pipex *p, char ***spl, char **env);
+int				ft_msh_pipex(t_pipex *p, char **env);
 
 					// SPLIT //
 // Srcs/Utils/Split/ft_split.c

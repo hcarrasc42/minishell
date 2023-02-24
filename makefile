@@ -6,7 +6,7 @@
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/02/24 12:34:01 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/02/24 13:49:52 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,12 +48,11 @@ $(DIR_OBJS)%.o : %.c
 	@echo "${YELLOW}Compiling with >>${RESET} $(CC) $(CFLAGS):\t $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+all: $(NAME)
+
 $(NAME) : $(PREFIXED)
 	@$(CC) $(CFLAGS)  -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I /Users/$(USER)/.brew/opt/readline/include -o $(NAME) $(PREFIXED)
 	@echo "\n${GREEN}Mandatory part compiled!${RESET}\n"
-
-
-all: $(NAME)
 
 clean:
 	@rm -rf $(OBJS) $(DIR_OBJS)

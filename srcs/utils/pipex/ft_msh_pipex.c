@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:10:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 13:12:38 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 13:59:45 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ void	ft_exceve(t_pipex *p, char **spl, int i, char **env)
 	char	*path;
 	char	**cmd;
 
-	printf("entra\n");
 	cmd = ft_strremover(spl);
 	path = get_path(cmd[0], env);
-	printf("path: %s\n", path);
 	if (i != 0)
 		dup2(p->fd[i - 1][0], STDIN);
 	if (i != p->len)
@@ -51,7 +49,8 @@ int	ft_msh_pipex(t_pipex *p, char **env)
 	tmp[0] = dup(STDIN);
 	tmp[1] = dup(STDOUT);
 	p->fdin = open(ft_file_finder(p->spl, 0), O_RDONLY);
-	p->fdout = open(ft_file_finder(p->spl, 1), O_WRONLY | O_CREAT, 777);
+	p->fdout = open(ft_file_finder(p->spl, 1), O_WRONLY | O_TRUNC
+			| O_CREAT, 0777);
 	if (p->fdin > 0)
 		dup2(p->fdin, STDIN);
 	if (p->fdout > 0)
@@ -66,7 +65,7 @@ int	ft_msh_pipex(t_pipex *p, char **env)
 		i++;
 	}
 	dup2(tmp[0], STDIN);
-	dup2(tmp[0], STDOUT);
+	dup2(tmp[1], STDOUT);
 	return (0);
 }
 

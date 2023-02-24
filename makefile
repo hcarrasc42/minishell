@@ -6,14 +6,14 @@
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/02/23 14:12:25 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/02/24 11:04:23 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	minishell
 DIR_OBJS		=	objs/
 CC				=	gcc
-CFLAGS			=	#-g3 -fsanitize=address
+CFLAGS			=	-g3 -fsanitize=address
 
 SRCS			=	srcs/main.c											\
 					srcs/ft_error.c										\

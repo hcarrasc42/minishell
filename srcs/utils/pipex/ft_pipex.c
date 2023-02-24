@@ -6,27 +6,27 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:24:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/23 12:47:40 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 08:37:19 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-void	exec(t_bonus bonus, char **cmd, char **env)
+/* void	exec(t_bonus bonus, char **cmd, char **env)
 {
 	char	*path;
 
 	bonus.fd[0] = 0;
-/* 	pipe(bonus.fd);
+	pipe(bonus.fd);
 	dup2(bonus.fd[0], STDIN);
-	dup2(bonus.fd[1], STDOUT); */
+	dup2(bonus.fd[1], STDOUT);
 	if (cmd[0][0] == '/')
 		path = cmd[0];
 	else
 		path = get_path(cmd[0], env);
 	//execve(path, "ls", env);
 	exit(1);
-}
+} */
 
 /* void	redir(char **argv, char **env, t_bonus bonus)
 {
@@ -49,7 +49,7 @@ void	exec(t_bonus bonus, char **cmd, char **env)
 	}
 } */
 
-int	ft_pipex(t_split *s, char ***spl, char **env)
+/* int	ft_pipex(t_split *s, char ***spl, char **env)
 {
 	t_bonus	bonus;
 	int		temp[2];
@@ -85,4 +85,4 @@ int	ft_pipex(t_split *s, char ***spl, char **env)
 	dup2(temp[0], STDIN);
 	dup2(temp[1], STDOUT);
 	return (0);
-}
+} */

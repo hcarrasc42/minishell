@@ -6,11 +6,21 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:56:40 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/22 11:06:41 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 09:14:21 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
+
+int	ft_triplen(char	***spl)
+{
+	int	len;
+
+	len = 0;
+	while (spl[len])
+		len++;
+	return (printf("triplen: %d\n", len), len - 1);
+}
 
 char	*ft_file_strdup(char *s1)
 {
@@ -50,6 +60,20 @@ char	*ft_file_finder(char ***spl, int nb)
 			j++;
 		}
 		k++;
+	}
+	return (0);
+}
+
+char	*ft_cmd_finder(char **cmd)
+{
+	int	i;
+
+	i = 0;
+	while (cmd[i])
+	{
+		if (cmd[i][0] != '<' && cmd[i][0] != '>')
+			return (ft_strdup(cmd[i]));
+		i++;
 	}
 	return (0);
 }

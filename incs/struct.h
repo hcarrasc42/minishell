@@ -6,22 +6,24 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/21 11:02:42 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:39:50 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct s_bonus
+typedef struct s_pipex
 {
 	pid_t	pid;
-	int		fd[2];
+	int		len;
+	int		**fd;
 	int		fdin;
 	int		fdout;
 	char	*path;
 	char	**cmd;
-}		t_bonus;
+	char	***spl;
+}		t_pipex;
 
 typedef struct s_split
 {
@@ -47,7 +49,6 @@ typedef struct s_data
 	int		output;
 	char	*infile;
 	char	*outfile;
-	char	***spl;
 }	t_data;
 
 typedef struct s_path

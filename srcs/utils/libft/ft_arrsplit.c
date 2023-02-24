@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:23:08 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/23 14:36:34 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 09:32:54 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ char	**ft_arrsplit(char **spl, char c)
 		if (!spl[i])
 			break ;
 		tmp[j] = ft_strdup(spl[i]);
-		printf("tm: %s\n", tmp[j]);
 		i++;
 		j++;
-		printf("i: %d\n", i);
 	}
 	tmp[j] = NULL;
 	printf("tm1: %s\n", tmp[0]);

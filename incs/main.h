@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/23 13:32:51 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 08:38:28 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,23 @@ int				ft_strncmp(char *str, char *cmp, int len);
 
 					// PIPEX //
 // Srcs/Utils/Pipex/ft_pipex.c
+int				ft_triplen(char	***spl);
+char			*ft_cmd_finder(char **cmd);
 int				str_ichr(char *str, char c);
 char			*get_path(char *cmd, char **env);
 char			**str_split(char *str, char sep);
 char			*str_ndup(char *str, unsigned int n);
 char			*ft_file_finder(char ***spl, int nb);
 int				ft_pipex(t_split *s, char ***spl, char **env);
-int				ft_msh_pipex(t_split *s, char ***spl, char **env);
+int				ft_msh_pipex(t_pipex *p, char ***spl, char **env);
 
 					// SPLIT //
 // Srcs/Utils/Split/ft_split.c
 int				ft_len(char *str);
 void			ft_init_split(t_split *s);
 int				ft_lens(char *str, t_split *s);
-void			ft_split_pipe(t_data *d, t_split *s);
 char			**ft_split(t_data *d, t_split *s, char *str);
+void			ft_split_pipe(t_data *d, t_split *s, t_pipex *p);
 char			*ft_split_core(t_data *d, t_split *s, char *tmp, char *str);
 
 // Srcs/Utils/Split/ft_split_utils.c
@@ -71,6 +73,7 @@ int				ft_jump_spaces(char *str, int i);
 void			ft_len_while(t_split *s, char *str, int n);
 char			*ft_no_comillas(t_data *d, t_split *s, char *str);
 char			*ft_comillas(t_data *d, t_split *s, char *str, int n);
+void			ft_genereal(t_pipex *p, char **env);
 
 					// UTILS //
 // Srcs/Utils/utils.c

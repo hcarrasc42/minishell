@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/14 13:57:33 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:14:50 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*ft_split_core(t_data *d, t_split *s, char *tmp, char *str)
 		else if (str[s->i] != 34 && str[s->i] != 39)
 			ft_no_comillas(d, s, str);
 	}
-	if (d->val && !d->in)
+	if (d->val && !d->in && !d->out)
 		s->tmp[s->k][s->j] = '\0';
 	d->val = 0;
 	return (tmp);

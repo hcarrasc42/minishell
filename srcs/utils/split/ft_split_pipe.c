@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:20:56 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/22 18:04:19 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 10:29:38 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_pipe_len(t_split *s)
 	return (printf("pipe_len: %d\n", len + 1), len + 1);
 }
 
-void	ft_split_pipe(t_data *d, t_split *s)
+void	ft_split_pipe(t_data *d, t_split *s, t_pipex *p)
 {
 	char	***aux;
 	int		k;
@@ -70,8 +70,8 @@ void	ft_split_pipe(t_data *d, t_split *s)
 
 	k = 0;
 	i = 0;
-	aux = (char ***)malloc(sizeof(char **) * (ft_pipe_len(s) + 1));
-	aux[ft_pipe_len(s) + 1] = NULL;
+	aux = (char ***)malloc(sizeof(char **) * (ft_pipe_len(s)));
+	aux[ft_pipe_len(s)] = NULL;
 	while (s->tmp[i])
 	{
 		j = 0;
@@ -87,5 +87,5 @@ void	ft_split_pipe(t_data *d, t_split *s)
 			i++;
 		}
 	}
-	d->spl = aux;
+	p->spl = aux;
 }

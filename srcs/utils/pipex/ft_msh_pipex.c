@@ -6,30 +6,26 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:10:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/23 14:26:25 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/24 09:21:43 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-//path = get_path(spl[0][0], env);
-//execve(path, spl[0], env);
-
-char	*ft_cmd_finder(char **cmd)
+void	ft_close(t_pipex *p, int n)
 {
 	int	i;
 
 	i = 0;
-	while (cmd[i])
+	while (i < n)
 	{
-		if (cmd[i][0] != '<' && cmd[i][0] != '>')
-			return (ft_strdup(cmd[i]));
+		close(p->fd[i][0]);
+		close(p->fd[i][1]);
 		i++;
 	}
-	return (0);
 }
 
-void	ft_exceve(t_bonus b, char **spl, char **env)
+void	ft_exceve(t_pipex *p, char **spl, int i, char **env)
 {
 	char	*path;
 	char	**cmd;
@@ -37,25 +33,55 @@ void	ft_exceve(t_bonus b, char **spl, char **env)
 	cmd = ft_strremover(spl);
 	path = get_path(cmd[0], env);
 	printf("path: %s\n", path);
+	if (i != 0)
+		dup2(p->fd[i - 1][0], STDIN);
+	if (i != p->len)
+		dup2(p->fd[i][1], STDOUT);
+	ft_close(p, p->len);
 	execve(path, cmd, env);
 }
 
-int	ft_msh_pipex(t_split *s, char ***spl, char **env)
+int	ft_msh_pipex(t_pipex *p, char ***spl, char **env)
 {
-	t_bonus	b;
 	int		i;
-	int		tmp[1];
+	int		tmp[2];
 
 	i = 0;
 	tmp[0] = dup(STDIN);
-	b.fdin = open(ft_file_finder(spl, 0), O_RDONLY);
-	if (b.fdin > 0)
-		dup2(b.fdin, STDIN);
-	while (i < 1)
+	tmp[1] = dup(STDOUT);
+	p->fdin = open(ft_file_finder(spl, 0), O_RDONLY);
+	p->fdout = open(ft_file_finder(spl, 1), O_RDONLY);
+	if (p->fdin > 0)
+		dup2(p->fdin, STDIN);
+	if (p->fdout > 0)
+		dup2(p->fdout, STDOUT);
+	while (i < p->len + 1)
 	{
-		ft_exceve(b, spl[i], env);
+		p->pid = fork();
+		if (p->pid == 0)
+			ft_exceve(p, spl[i], i, env);
+		ft_close(p, i);
+		waitpid(p->pid, NULL, 0);
 		i++;
 	}
 	dup2(tmp[0], STDIN);
+	dup2(tmp[0], STDOUT);
 	return (0);
+}
+
+void	ft_genereal(t_pipex *p, char **env)
+{
+	int	i;
+
+	i = 0;
+	p->len = ft_triplen(p->spl);
+	p->fd = (int **)malloc(sizeof(int *) * p->len);
+	while (i < p->len)
+	{
+		p->fd[i] = (int *)malloc(sizeof(int) * 2);
+		pipe(p->fd[i]);
+		i++;
+	}
+	ft_msh_pipex(p, p->spl, env);
+	free(p->fd);
 }

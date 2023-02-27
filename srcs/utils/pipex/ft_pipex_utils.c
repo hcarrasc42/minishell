@@ -6,11 +6,17 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:56:40 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 12:51:10 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:17:51 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
+
+void	ft_print_exit(char *str)
+{
+	printf("Error: %s\n", str);
+	exit(2);
+}
 
 int	ft_triplen(char	***spl)
 {

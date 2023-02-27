@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 12:30:20 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:12:23 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ int	ft_lens(char *str, t_split *s)
 char	*ft_split_core(t_data *d, t_split *s, char *tmp, char *str)
 {
 	s->j = 0;
+	d->in = 0;
+	d->out = 0;
 	while (str[s->i])
 	{
 		if (ft_spaces(str, s->i))
@@ -81,7 +83,10 @@ char	*ft_split_core(t_data *d, t_split *s, char *tmp, char *str)
 			ft_no_comillas(d, s, str);
 	}
 	if (d->val && !d->in && !d->out)
+	{
+		printf("entra\n");
 		s->tmp[s->k][s->j] = '\0';
+	}
 	d->val = 0;
 	return (tmp);
 }

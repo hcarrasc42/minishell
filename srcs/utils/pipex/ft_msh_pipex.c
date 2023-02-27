@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:10:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 13:59:45 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:23:54 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_exceve(t_pipex *p, char **spl, int i, char **env)
 		dup2(p->fd[i][1], STDOUT);
 	ft_close(p, p->len);
 	execve(path, cmd, env);
+	ft_print_exit("command not found");
 }
 
 int	ft_msh_pipex(t_pipex *p, char **env)

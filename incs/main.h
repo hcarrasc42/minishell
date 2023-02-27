@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 12:10:40 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:19:27 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,15 @@ int				ft_strncmp(char *str, char *cmp, int len);
 					// PIPEX //
 // Srcs/Utils/Pipex/ft_pipex.c
 int				ft_triplen(char	***spl);
+void			ft_print_exit(char *str);
 char			*ft_cmd_finder(char **cmd);
 int				str_ichr(char *str, char c);
 char			*get_path(char *cmd, char **env);
 char			**str_split(char *str, char sep);
 char			*str_ndup(char *str, unsigned int n);
 char			*ft_file_finder(char ***spl, int nb);
-int				ft_pipex(t_split *s, char ***spl, char **env);
 int				ft_msh_pipex(t_pipex *p, char **env);
+int				ft_pipex(t_split *s, char ***spl, char **env);
 
 					// SPLIT //
 // Srcs/Utils/Split/ft_split.c

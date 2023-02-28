@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:42:46 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/23 13:13:21 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:44:14 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,5 @@ void	ft_print_msh(char **str)
 void	ft_exit(t_split *s)
 {
 	if (ft_strncmp(s->read, "exit", 4))
-	{
-		free(s->read);
 		exit (0);
-	}
 }

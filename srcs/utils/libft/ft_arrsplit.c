@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 13:23:08 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 12:13:21 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:25:45 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_arrlen_spc(char **aux)
 		i++;
 		len++;
 	}
-	return (printf("arrlen: %d\n", len), len);
+	return (len);
 }
 
 char	**ft_arrsplit(char **aux, char c)
@@ -49,7 +49,5 @@ char	**ft_arrsplit(char **aux, char c)
 		j++;
 	}
 	tmp[j] = NULL;
-	printf("tm1: %s\n", tmp[0]);
-	printf("tm2: %s\n", tmp[1]);
 	return (tmp);
 }

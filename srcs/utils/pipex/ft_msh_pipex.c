@@ -6,11 +6,26 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:10:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/27 10:23:54 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:21:16 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
+
+void	ft_file_open(t_pipex *p)
+{
+	p->infi = ft_file_finder(p->spl, 0);
+	if (p->infi)
+		p->fdin = open(p->infi, O_RDONLY);
+	p->outfi = ft_file_finder(p->spl, 1);
+	if (p->outfi)
+		p->fdout = open(p->outfi, O_WRONLY | O_TRUNC
+				| O_CREAT, 0777);
+	if (p->infi)
+		free(p->infi);
+	if (p->outfi)
+		free(p->outfi);
+}
 
 void	ft_close(t_pipex *p, int n)
 {
@@ -49,9 +64,7 @@ int	ft_msh_pipex(t_pipex *p, char **env)
 	i = 0;
 	tmp[0] = dup(STDIN);
 	tmp[1] = dup(STDOUT);
-	p->fdin = open(ft_file_finder(p->spl, 0), O_RDONLY);
-	p->fdout = open(ft_file_finder(p->spl, 1), O_WRONLY | O_TRUNC
-			| O_CREAT, 0777);
+	ft_file_open(p);
 	if (p->fdin > 0)
 		dup2(p->fdin, STDIN);
 	if (p->fdout > 0)
@@ -84,5 +97,4 @@ void	ft_genereal(t_pipex *p, char **env)
 		i++;
 	}
 	ft_msh_pipex(p, env);
-	free(p->fd);
 }

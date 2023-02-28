@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 12:26:31 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/27 14:08:26 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ typedef struct s_pipex
 	int		**fd;
 	int		fdin;
 	int		fdout;
-	char	*path;
+	char	*infi;
+	char	*outfi;
 	char	**cmd;
 	char	***spl;
 }		t_pipex;

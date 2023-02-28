@@ -6,17 +6,19 @@
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/02/27 12:00:51 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/02/28 12:46:19 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	minishell
 DIR_OBJS		=	objs/
 CC				=	gcc
-CFLAGS			=	#-g3 -fsanitize=address
+CFLAGS			=	-g#-g3 -fsanitize=address
 
 SRCS			=	srcs/main.c											\
 					srcs/ft_error.c										\
+					srcs/ft_free.c										\
+					srcs/ft_struct_init.c								\
 					srcs/utils/utils.c									\
 					srcs/utils/file/ft_file.c							\
 					srcs/utils/file/ft_file_utils.c						\
@@ -31,9 +33,9 @@ SRCS			=	srcs/main.c											\
 					srcs/utils/split/ft_split_pipe.c					\
 					srcs/utils/split/ft_space_pipe.c					\
 					srcs/utils/split/ft_split_utils.c					\
-					srcs/utils/pipex/ft_pipex.c							\
 					srcs/utils/pipex/ft_msh_pipex.c						\
 					srcs/utils/pipex/ft_pipex_utils.c					\
+					srcs/utils/pipex/ft_pipex_utils2.c					\
 
 OBJS			=	$(SRCS:.c=.o)
 PREFIXED	=	$(addprefix $(DIR_OBJS), $(OBJS))

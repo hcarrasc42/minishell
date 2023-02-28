@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/27 10:19:27 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:20:02 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 					// FILE //
 // Srcs/Utils/file
-void			ft_init_file(t_data *d);
+void			ft_data_init(t_data *d);
 int				ft_is_space_char(char c);
 int				ft_file(t_data *d, t_split *s);
 int				ft_len_file(t_split *s, char c);
@@ -50,6 +50,7 @@ int				ft_strncmp(char *str, char *cmp, int len);
 // Srcs/Utils/Pipex/ft_pipex.c
 int				ft_triplen(char	***spl);
 void			ft_print_exit(char *str);
+void			ft_pipex_init(t_pipex *p);
 char			*ft_cmd_finder(char **cmd);
 int				str_ichr(char *str, char c);
 char			*get_path(char *cmd, char **env);
@@ -57,12 +58,11 @@ char			**str_split(char *str, char sep);
 char			*str_ndup(char *str, unsigned int n);
 char			*ft_file_finder(char ***spl, int nb);
 int				ft_msh_pipex(t_pipex *p, char **env);
-int				ft_pipex(t_split *s, char ***spl, char **env);
 
 					// SPLIT //
 // Srcs/Utils/Split/ft_split.c
 int				ft_len(char *str);
-void			ft_init_split(t_split *s);
+void			ft_split_init(t_split *s);
 int				ft_lens(char *str, t_split *s);
 char			**ft_split(t_data *d, t_split *s, char *str);
 void			ft_split_pipe(t_data *d, t_split *s, t_pipex *p);
@@ -87,5 +87,7 @@ void			ft_error(t_split *s);
 int				ft_find_char(char *str, int i);
 int				ft_strncmp1(const char *s1, const char *s2, size_t n);
 void			ft_space_pipe(t_split *s);
+void			ft_free(t_split *s, t_data *d, t_pipex *p);
+void			ft_struct_init(t_split *s, t_data *d, t_pipex *p);
 
 #endif

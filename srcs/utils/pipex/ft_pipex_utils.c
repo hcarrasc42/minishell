@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:56:40 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/27 10:17:51 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:19:16 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_triplen(char	***spl)
 	len = 0;
 	while (spl[len])
 		len++;
-	return (printf("triplen: %d\n", len), len - 1);
+	return (len - 1);
 }
 
 char	*ft_file_strdup(char *s1)
@@ -44,7 +44,7 @@ char	*ft_file_strdup(char *s1)
 		j++;
 	}
 	tmp[j] = '\0';
-	return (printf("ft_file: %s\n", tmp), tmp);
+	return (tmp);
 }
 
 char	*ft_file_finder(char ***spl, int nb)

@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:56:12 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/20 12:41:52 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/02/28 13:58:09 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_line_len(char *str)
 		i++;
 		len++;
 	}
-	return (len);
+	return (printf("ft_line_len: %d\n", len), len);
 }
 
 void	ft_comillas_pipe(t_split *s, int type)
@@ -83,6 +83,7 @@ void	ft_space_pipe(t_split *s)
 		}
 		s->i++;
 	}
+	free(s->read);
 	s->str[s->j] = '\0';
 	s->read = s->str;
 }

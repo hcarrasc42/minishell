@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:20:56 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 14:37:04 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:33:13 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,16 @@ void	ft_split_pipe(t_data *d, t_split *s, t_pipex *p)
 			j++;
 			i++;
 		}
+	}
+	i = 0;
+	if (s->tmp)
+	{
+		while (s->tmp[i])
+		{
+			printf("tmp-> %s\n", s->tmp[i]);
+			free(s->tmp[i]);
+			i++;
+		}
+		free(s->tmp);
 	}
 }

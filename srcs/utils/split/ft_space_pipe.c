@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:56:12 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 12:17:54 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:52:44 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	ft_line_len(char *str)
 		if (str[i] == '"')
 		{
 			i++;
+			len = len + 2;
 			while (str[i] == '"')
 				i++;
 		}
@@ -86,4 +87,5 @@ void	ft_space_pipe(t_split *s)
 	free(s->read);
 	s->str[s->j] = '\0';
 	s->read = s->str;
+	printf("s->read: %s\n", s->read);
 }

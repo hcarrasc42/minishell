@@ -1,3 +1,9 @@
-arrlen: 1
-arrlen: 2
-       8       8      62
+arrlen: 3
+Makefile
+file.txt
+incs
+minishell
+minishell.dSYM
+objs
+out
+srcs

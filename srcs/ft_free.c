@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:54:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 13:02:53 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:32:09 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,6 @@ void	ft_free_split(t_split *s)
 	i = 0;
 	if (s->str)
 		free(s->str);
-	if (s->tmp)
-	{
-		while (i < s->ft_len)
-		{
-			//printf("tmp-> %s\n", s->tmp[i]);
-			free(s->tmp[i]);
-			i++;
-		}
-		free(s->tmp);
-	}
 }
 
 void	ft_free_data(t_data *d)

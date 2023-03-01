@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/27 14:08:26 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:38:43 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_split
 	int		y;
 	int		com;
 	int		len;
+	int		len1;
 	int		val;
 	int		ft_len;
 	char	*str;

@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 12:26:21 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:14:40 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int	ft_len(char *str)
 
 	i = 0;
 	len = 0;
+	if (!ft_find_char(str, i))
+	{
+		printf("akjhdhdhfhfhf\n");
+		return (len);
+	}
 	while (str[i] && (str[i] == '\n' || str[i] == ' ' || str[i] == '\t'))
 		i++;
 	while (str[i])
@@ -81,6 +86,8 @@ char	**ft_split(t_data *d, t_split *s, char *str)
 	while (str[s->i] != '\0' && s->val == 0 && ft_find_char(str, s->i))
 	{
 		s->i = ft_jump_spaces(str, s->i);
+		if (!str[s->i])
+			break ;
 		if (str[s->i] != '<' && str[s->i] != '>')
 			s->tmp[s->k] = (char *)malloc(sizeof(char) * (ft_lens(str, s) + 1));
 		ft_split_core(d, s, s->tmp[s->k], str);
@@ -88,6 +95,6 @@ char	**ft_split(t_data *d, t_split *s, char *str)
 			s->k--;
 		s->k++;
 	}
-	s->tmp[s->k] = 0;
+	s->tmp[s->k] = NULL;
 	return (s->tmp);
 }

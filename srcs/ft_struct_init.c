@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:14:10 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 12:18:19 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 12:05:16 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	ft_split_init(t_split *s)
 	s->com = 0;
 	s->len = 0;
 	s->ft_len = ft_len(s->read);
-	s->tmp = (char **)malloc(sizeof(char *) * (s->ft_len + 1));
+	if (s->ft_len)
+		s->tmp = (char **)malloc(sizeof(char *) * (s->ft_len + 1));
 }
 
 void	ft_pipex_init(t_pipex *p)

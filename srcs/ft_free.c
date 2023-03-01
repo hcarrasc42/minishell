@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:54:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 13:59:28 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:02:53 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_free_split(t_split *s)
 	{
 		while (i < s->ft_len)
 		{
-			printf("puto peludo\n");
+			//printf("tmp-> %s\n", s->tmp[i]);
 			free(s->tmp[i]);
 			i++;
 		}

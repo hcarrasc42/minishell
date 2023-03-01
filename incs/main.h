@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 12:20:02 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:47:39 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void			ft_split_pipe(t_data *d, t_split *s, t_pipex *p);
 char			*ft_split_core(t_data *d, t_split *s, char *tmp, char *str);
 
 // Srcs/Utils/Split/ft_split_utils.c
-int				ft_spaces(char *str, int i);
 int				ft_jump_spaces(char *str, int i);
 void			ft_len_while(t_split *s, char *str, int n);
 char			*ft_no_comillas(t_data *d, t_split *s, char *str);

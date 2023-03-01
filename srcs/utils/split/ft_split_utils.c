@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:50:59 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/24 10:14:53 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 11:50:01 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_jump_spaces(char *str, int i)
 {
 	while (ft_spaces(str, i))
 		i++;
-	return (i);
+	return (printf("jump spaces: %d\n", i), i);
 }
 
 int	ft_infile_outfile(t_split *s, char *str)

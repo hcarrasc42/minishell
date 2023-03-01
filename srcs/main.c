@@ -6,15 +6,20 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 12:20:31 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 13:03:29 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/main.h"
 
+void	ft_void(t_split *s)
+{
+	if (!ft_find_char(s->read, 0))
+		exit(1);
+}
+
 void	minishell(t_split *s, t_data *d, t_pipex *p, char **env)
 {
-	ft_exit(s);
 	ft_struct_init(s, d, p);
 	ft_split(d, s, s->read);
 	//ft_print_msh(s->tmp);
@@ -28,10 +33,16 @@ void	ft_readline(t_split *s, t_data *d, t_pipex *p, char **env)
 	while (1)
 	{
 		s->read = readline("minishell$> ");
+		ft_exit(s);
 		add_history(s->read);
-		ft_space_pipe(s);
-		ft_error(s);
-		minishell(s, d, p, env);
+		if (ft_find_char(s->read, 0))
+		{
+			ft_space_pipe(s);
+			ft_error(s);
+			minishell(s, d, p, env);
+		}
+		else
+			free(s->read);
 	}
 }
 

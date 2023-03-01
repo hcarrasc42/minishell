@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:54:19 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 14:48:59 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:59:25 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@ int	ft_len(char *str)
 	i = 0;
 	len = 0;
 	if (!ft_find_char(str, i))
-	{
-		printf("akjhdhdhfhfhf\n");
 		return (len);
-	}
 	while (str[i] && (str[i] == '\n' || str[i] == ' ' || str[i] == '\t'))
 		i++;
 	while (str[i])

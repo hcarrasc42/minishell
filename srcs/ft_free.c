@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 12:54:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 14:32:09 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/01 14:59:04 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	ft_free_pipex(t_pipex *p)
 			j = 0;
 			while (p->spl[i][j])
 			{
-				printf("puto calvo\n");
 				free(p->spl[i][j]);
 				j++;
 			}

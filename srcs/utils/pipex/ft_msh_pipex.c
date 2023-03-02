@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:10:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 14:21:16 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:22:45 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 
 void	ft_file_open(t_pipex *p)
 {
-	p->infi = ft_file_finder(p->spl, 0);
+	p->infi = ft_file_finder(p, p->spl, 0);
 	if (p->infi)
 		p->fdin = open(p->infi, O_RDONLY);
-	p->outfi = ft_file_finder(p->spl, 1);
-	if (p->outfi)
+	p->outfi = ft_file_finder(p, p->spl, 1);
+	if (p->outfi && p->min == 1)
 		p->fdout = open(p->outfi, O_WRONLY | O_TRUNC
+				| O_CREAT, 0777);
+	if (p->outfi && p->min > 1)
+		p->fdout = open(p->outfi, O_WRONLY | O_APPEND
 				| O_CREAT, 0777);
 	if (p->infi)
 		free(p->infi);

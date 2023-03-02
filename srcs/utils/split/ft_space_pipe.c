@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 11:56:12 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 14:52:44 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:24:54 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_line_len(char *str)
 		i++;
 		len++;
 	}
-	return (printf("ft_line_len: %d\n", len), len);
+	return (len);
 }
 
 void	ft_comillas_pipe(t_split *s, int type)
@@ -66,10 +66,8 @@ void	ft_space_pipe(t_split *s)
 	s->str = (char *)malloc(sizeof(char) * (ft_line_len(s->read) + 1));
 	while (s->read[s->i])
 	{
-		if (s->read[s->i] == 34)
-			ft_comillas_pipe(s, 34);
-		if (s->read[s->i] == 39)
-			ft_comillas_pipe(s, 39);
+		if (s->read[s->i] == 34 || s->read[s->i] == 39)
+			ft_comillas_pipe(s, s->read[s->i]);
 		if (s->read[s->i] == '|' && !ft_lspa(s->read, s->i - 1))
 		{
 			s->str[s->j] = ' ';
@@ -87,5 +85,4 @@ void	ft_space_pipe(t_split *s)
 	free(s->read);
 	s->str[s->j] = '\0';
 	s->read = s->str;
-	printf("s->read: %s\n", s->read);
 }

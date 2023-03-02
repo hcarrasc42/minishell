@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:51:47 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 12:18:04 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:25:48 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ int	ft_len_file(t_split *s, char c)
 		i++;
 		len++;
 	}
-	return (printf("filelen: %d\n", len), len);
+	return (len);
 }

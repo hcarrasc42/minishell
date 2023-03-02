@@ -1,9 +1,2 @@
-arrlen: 3
-Makefile
-file.txt
-incs
-minishell
-minishell.dSYM
-objs
-out
-srcs
+hola kilkerfer
+hola kilkerfer\n

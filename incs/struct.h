@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:01:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 14:38:43 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:16:35 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ typedef struct s_pipex
 {
 	pid_t	pid;
 	int		len;
+	int		min;
+	int		max;
 	int		**fd;
 	int		fdin;
 	int		fdout;

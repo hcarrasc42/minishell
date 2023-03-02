@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:56:40 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/02/28 14:19:16 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:24:47 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,23 @@ int	ft_triplen(char	***spl)
 	return (len - 1);
 }
 
-char	*ft_file_strdup(char *s1)
+char	*ft_file_strdup(t_pipex *p, char *s1, char c)
 {
 	char	*tmp;
 	int		i;
 	int		j;
 
-	i = 1;
+	i = 0;
 	j = 0;
 	tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1)));
+	while (s1[i] == c)
+	{
+		i++;
+		if (c == '>')
+			p->min++;
+		if (c == '<')
+			p->max++;
+	}
 	while (s1[i])
 	{
 		tmp[j] = s1[i];
@@ -47,7 +55,7 @@ char	*ft_file_strdup(char *s1)
 	return (tmp);
 }
 
-char	*ft_file_finder(char ***spl, int nb)
+char	*ft_file_finder(t_pipex *p, char ***spl, int nb)
 {
 	char	c[2];
 	int		j;
@@ -62,7 +70,7 @@ char	*ft_file_finder(char ***spl, int nb)
 		while (spl[k][j])
 		{
 			if (spl[k][j][0] == c[nb])
-				return (ft_file_strdup(spl[k][j]));
+				return (ft_file_strdup(p, spl[k][j], c[nb]));
 			j++;
 		}
 		k++;

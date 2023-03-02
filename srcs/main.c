@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:40:05 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 13:03:29 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 12:53:58 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	minishell(t_split *s, t_data *d, t_pipex *p, char **env)
 {
 	ft_struct_init(s, d, p);
 	ft_split(d, s, s->read);
-	//ft_print_msh(s->tmp);
 	ft_split_pipe(d, s, p);
 	ft_genereal(p, env);
 	ft_free(s, d, p);

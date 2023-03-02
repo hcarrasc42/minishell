@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 12:14:10 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 14:37:35 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:16:42 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,17 @@ void	ft_split_init(t_split *s)
 
 void	ft_pipex_init(t_pipex *p)
 {
+	p->fd = 0;
+	p->max = 0;
+	p->min = 0;
 	p->pid = 0;
 	p->len = 0;
-	p->fd = 0;
-	p->fdin = 0;
-	p->fdout = 0;
-	p->infi = 0;
-	p->outfi = 0;
 	p->cmd = 0;
 	p->spl = 0;
+	p->fdin = 0;
+	p->infi = 0;
+	p->fdout = 0;
+	p->outfi = 0;
 }
 
 void	ft_struct_init(t_split *s, t_data *d, t_pipex *p)

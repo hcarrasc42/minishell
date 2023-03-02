@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/02 13:11:51 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:57:26 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int				ft_strncmp(char *str, char *cmp, int len);
 int				ft_triplen(char	***spl);
 void			ft_print_exit(char *str);
 void			ft_pipex_init(t_pipex *p);
-char			*ft_cmd_finder(char **cmd);
 int				str_ichr(char *str, char c);
 char			*get_path(char *cmd, char **env);
 char			**str_split(char *str, char sep);
@@ -88,5 +87,6 @@ int				ft_strncmp1(const char *s1, const char *s2, size_t n);
 void			ft_space_pipe(t_split *s);
 void			ft_free(t_split *s, t_data *d, t_pipex *p);
 void			ft_struct_init(t_split *s, t_data *d, t_pipex *p);
+void			ft_here_doc(char *lim);
 
 #endif

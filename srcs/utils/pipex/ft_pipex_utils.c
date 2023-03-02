@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 10:56:40 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/02 13:24:47 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:18:47 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,23 @@ char	*ft_file_finder(t_pipex *p, char ***spl, int nb)
 	return (0);
 }
 
-char	*ft_cmd_finder(char **cmd)
+void	ft_here_doc(char *lim)
 {
-	int	i;
+	int		fd;
+	int		len;
+	char	*read;
 
-	i = 0;
-	while (cmd[i])
+	len = ft_strlen(lim);
+	fd = open("tmp.txt", O_WRONLY | O_TRUNC | O_CREAT, 0777);
+	while (1)
 	{
-		if (cmd[i][0] != '<' && cmd[i][0] != '>')
-			return (ft_strdup(cmd[i]));
-		i++;
+		read = readline("heredoc$> ");
+		if (!ft_strncmp1(read, lim, len + 1))
+			break ;
+		write(fd, read, ft_strlen(read));
+		write(fd, "\n", 1);
+		free (read);
 	}
-	return (0);
+	free (read);
+	close(fd);
 }

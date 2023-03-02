@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 12:10:54 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/02 13:22:45 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:20:14 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,14 @@
 void	ft_file_open(t_pipex *p)
 {
 	p->infi = ft_file_finder(p, p->spl, 0);
-	if (p->infi)
+	if (p->infi && p->max == 1)
 		p->fdin = open(p->infi, O_RDONLY);
+	if (p->infi && p->max > 1)
+	{
+		ft_here_doc(p->infi);
+		p->fdin = open("tmp.txt", O_RDONLY);
+		unlink("tmp.txt");
+	}
 	p->outfi = ft_file_finder(p, p->spl, 1);
 	if (p->outfi && p->min == 1)
 		p->fdout = open(p->outfi, O_WRONLY | O_TRUNC

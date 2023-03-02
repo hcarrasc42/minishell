@@ -1,19 +1,19 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 12:26:59 by hcarrasc          #+#    #+#              #
-#    Updated: 2023/02/28 12:46:19 by hcarrasc         ###   ########.fr        #
+#    Updated: 2023/03/02 14:26:53 by hcarrasc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	minishell
 DIR_OBJS		=	objs/
 CC				=	gcc
-CFLAGS			=	-g#-g3 -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -g3 -fsanitize=address
 
 SRCS			=	srcs/main.c											\
 					srcs/ft_error.c										\

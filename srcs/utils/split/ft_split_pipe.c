@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:20:56 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/02 13:25:17 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:29:55 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_pipe_len(t_split *s)
 	return (len + 1);
 }
 
-void	ft_split_pipe(t_data *d, t_split *s, t_pipex *p)
+void	ft_split_pipe(t_split *s, t_pipex *p)
 {
 	int		k;
 	int		i;

@@ -6,13 +6,13 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 13:28:22 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/01 11:38:51 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:29:11 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../incs/main.h"
 
-void	ft_outfile(t_data *d, t_split *s)
+void	ft_outfile(t_split *s)
 {
 	int		j;
 	char	*outfile;
@@ -38,7 +38,7 @@ void	ft_outfile(t_data *d, t_split *s)
 	s->tmp[s->k] = outfile;
 }
 
-void	ft_infile(t_data *d, t_split *s)
+void	ft_infile(t_split *s)
 {
 	int		j;
 	char	*infile;
@@ -66,15 +66,16 @@ void	ft_infile(t_data *d, t_split *s)
 
 int	ft_file(t_data *d, t_split *s)
 {
+	d->infile = 0;
 	if (s->read[s->i] == '<')
 	{
 		d->in = 1;
-		ft_infile(d, s);
+		ft_infile(s);
 	}
 	else
 	{
 		d->out = 1;
-		ft_outfile(d, s);
+		ft_outfile(s);
 	}
 	return (0);
 }

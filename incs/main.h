@@ -6,7 +6,7 @@
 /*   By: hcarrasc <hcarrasc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 12:30:18 by hcarrasc          #+#    #+#             */
-/*   Updated: 2023/03/02 13:57:26 by hcarrasc         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:30:41 by hcarrasc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int				ft_len(char *str);
 void			ft_split_init(t_split *s);
 int				ft_lens(char *str, t_split *s);
 char			**ft_split(t_data *d, t_split *s, char *str);
-void			ft_split_pipe(t_data *d, t_split *s, t_pipex *p);
+void			ft_split_pipe(t_split *s, t_pipex *p);
 char			*ft_split_core(t_data *d, t_split *s, char *tmp, char *str);
 
 // Srcs/Utils/Split/ft_split_utils.c
@@ -85,7 +85,7 @@ void			ft_error(t_split *s);
 int				ft_find_char(char *str, int i);
 int				ft_strncmp1(const char *s1, const char *s2, size_t n);
 void			ft_space_pipe(t_split *s);
-void			ft_free(t_split *s, t_data *d, t_pipex *p);
+void			ft_free(t_split *s, t_pipex *p);
 void			ft_struct_init(t_split *s, t_data *d, t_pipex *p);
 void			ft_here_doc(char *lim);
 
